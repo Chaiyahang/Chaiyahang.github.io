@@ -86,7 +86,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="iOS TouchID Authentication," />
 
 
 
@@ -102,16 +102,22 @@
 
 
 
-<meta name="description" content="Talk is cheap， show me the code. 用心创造美好未来">
-<meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="http://yoursite.com/tags/index.html">
+<meta name="description" content="说明：TouchID 指纹识别是iPhone 5s设备新增的一项重大功能，用于数据加密和安全。而在iOS8.0 以后也向第
+ 三方开放了相应功能API，我们可以利用这个API做相应的用户验证和登录的功能，省去输入密码的环节，提高登录 的用户体验。
+TouchID API官方文档:官方文档仅在 iOS 8.0 之后支持 12345678canEvaluatePolicy:监测设备是否支持TouchI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TouchID 的集成开发说明">
+<meta property="og:url" content="http://yoursite.com/2016/11/21/TouchID-的集成开发说明/index.html">
 <meta property="og:site_name" content="iOS Developer">
-<meta property="og:description" content="Talk is cheap， show me the code. 用心创造美好未来">
-<meta property="og:updated_time" content="2016-11-17T07:34:51.000Z">
+<meta property="og:description" content="说明：TouchID 指纹识别是iPhone 5s设备新增的一项重大功能，用于数据加密和安全。而在iOS8.0 以后也向第
+ 三方开放了相应功能API，我们可以利用这个API做相应的用户验证和登录的功能，省去输入密码的环节，提高登录 的用户体验。
+TouchID API官方文档:官方文档仅在 iOS 8.0 之后支持 12345678canEvaluatePolicy:监测设备是否支持TouchI">
+<meta property="og:updated_time" content="2016-11-21T06:14:08.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tags">
-<meta name="twitter:description" content="Talk is cheap， show me the code. 用心创造美好未来">
+<meta name="twitter:title" content="TouchID 的集成开发说明">
+<meta name="twitter:description" content="说明：TouchID 指纹识别是iPhone 5s设备新增的一项重大功能，用于数据加密和安全。而在iOS8.0 以后也向第
+ 三方开放了相应功能API，我们可以利用这个API做相应的用户验证和登录的功能，省去输入密码的环节，提高登录 的用户体验。
+TouchID API官方文档:官方文档仅在 iOS 8.0 之后支持 12345678canEvaluatePolicy:监测设备是否支持TouchI">
 
 
 
@@ -139,19 +145,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/11/21/TouchID-的集成开发说明/"/>
 
 
 
 
 
-  <title>
-  
-
-  
-    tags | iOS Developer
-  
-</title>
+  <title> TouchID 的集成开发说明 | iOS Developer </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -172,7 +172,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -273,25 +273,180 @@
             
 
   <div id="posts" class="posts-expand">
-  <header class="post-header">
+    
 
-	<h2 class="post-title" itemprop="name headline">tags</h2>
+  
 
+  
+  
+  
 
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/21/TouchID-的集成开发说明/">
 
-</header>
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="柴亚航">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="iOS Developer">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="iOS Developer" src="">
+    </span>
+  </span>
 
     
-    
-      <div class="tag-cloud">
-        <div class="tag-cloud-title">
-            目前共计 2 个标签
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                TouchID 的集成开发说明
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-21T14:08:42+08:00">
+                2016-11-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/11/21/TouchID-的集成开发说明/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/21/TouchID-的集成开发说明/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
         </div>
-        <div class="tag-cloud-tags">
-          <a href="/tags/iOS-TouchID-Authentication/" style="font-size: 12px; color: #ccc">iOS TouchID Authentication</a> <a href="/tags/生命/" style="font-size: 12px; color: #ccc">生命</a>
-        </div>
-      </div>
+      </header>
     
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="说明："><a href="#说明：" class="headerlink" title="说明："></a>说明：</h2><pre><code>TouchID 指纹识别是iPhone 5s设备新增的一项重大功能，用于数据加密和安全。而在iOS8.0 以后也向第
+</code></pre><p> 三方开放了相应功能API，我们可以利用这个API做相应的用户验证和登录的功能，省去输入密码的环节，提高登录<br> 的用户体验。</p>
+<h2 id="TouchID-API官方文档"><a href="#TouchID-API官方文档" class="headerlink" title="TouchID API官方文档:"></a>TouchID API官方文档:</h2><h3 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a><a href="https://developer.apple.com/library/ios/documentation/LocalAuthentication/Reference/LAContext_Class/index.html" target="_blank" rel="external">官方文档</a></h3><h2 id="仅在-iOS-8-0-之后支持"><a href="#仅在-iOS-8-0-之后支持" class="headerlink" title="仅在 iOS 8.0 之后支持"></a>仅在 iOS 8.0 之后支持</h2> <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">canEvaluatePolicy:监测设备是否支持TouchID，返回BOOL，并且若不支持，则在NSError里面返回相应状态</div><div class="line">evaluatePolicy:TouchID验证状态，在Block里面返回验证状态BOOL和NSError</div><div class="line">iOS 9.0以后，有更加严密的 TouchID 认证流程，方法如下：</div><div class="line">- (void)evaluateAccessControl:(SecAccessControlRef)accessControl</div><div class="line">                    operation:(LAAccessControlOperation)operation</div><div class="line">              localizedReason:(NSString *)localizedReason</div><div class="line">                        reply:(void(^)(BOOL success, NSError * __nullable error))reply</div><div class="line">NS_AVAILABLE(10_11, 9_0) __WATCHOS_AVAILABLE(3.0) __TVOS_UNAVAILABLE;</div></pre></td></tr></table></figure>
+<p> #逻辑流程设计：<br>    在设备第一次使用指纹登录之前，必须先登录原有的账号（app注册账号），进行设备（用户）绑定。</p>
+<p> 绑定TouchID举例说明：<br> 1、开启：在app登录后，比如：在“用户信息－安全”，点击开启“指纹登录”；<br> 2、验证TouchID：检测当前设备是否支持TouchID，若支持则发起TouchID验证；<br> 3、生成设备账号/密码：TouchID验证通过后，根据当前已登录的账号和硬件设备Token，生成设备账号/密码（规则可自定，密码要长要复杂），并保存在keychain；<br> 4、绑定：生成设备账号/密码后，将原账号及设备账号/密码，加密后发送到服务端进行绑定；<br> 5、成功：验证原账号及设备账号有效后，返回相应状态，绑定成功则完成整个TouchID（设备）绑定流程。</p>
+<p> 使用已经绑定的TouchID登录：<br>    在设备（用户）绑定之后，并且用户账号退出后，可以使用指纹登录，若当前设备未绑定，则不会出现“指纹登<br> 录”按钮<br> 流程说明：<br> 1、TouchID登录：在用户登录界面，点击“指纹登录”；<br> 2、验证TouchID：检测当前设备是否支持TouchID，若支持则发起TouchID验证；<br> 3、登录：读取app在本机的设备账号/密码，调用设备登录接口，发起登录请求；<br> 4、成功：验证设备账号/密码后，返回相应状态，登录成功则完成整个TouchID登录流程。</p>
+<p> 需要导入LocalAuthentication.framework</p>
+<p> 特别注意：在使用的过程中，看清属性是在 iOS XX_0 几之后才支持才允许使用的，很多属性和特性都是随着机型<br> 的迭代而新增的；使用不当会崩溃哟。用TouchID进行验证登录，尤其涉及到安全和隐私问题，这方面，我们尤其要<br> 重视！！！</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/WeChatPay.jpg" alt="柴亚航 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/AliPay.jpg" alt="柴亚航 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS-TouchID-Authentication/" rel="tag"># iOS TouchID Authentication</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/18/站在岁月之巅放牧心灵/" rel="next" title="站在岁月之巅放牧心灵">
+                <i class="fa fa-chevron-left"></i> 站在岁月之巅放牧心灵
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -302,8 +457,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="tags/index.html"
-           data-title="tags" data-url="http://yoursite.com/tags/index.html">
+      <div class="ds-thread" data-thread-key="2016/11/21/TouchID-的集成开发说明/"
+           data-title="TouchID 的集成开发说明" data-url="http://yoursite.com/2016/11/21/TouchID-的集成开发说明/">
       </div>
     
   </div>
@@ -327,8 +482,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -480,6 +644,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#说明："><span class="nav-number">1.</span> <span class="nav-text">说明：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TouchID-API官方文档"><span class="nav-number">2.</span> <span class="nav-text">TouchID API官方文档:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#官方文档"><span class="nav-number">2.1.</span> <span class="nav-text">官方文档</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#仅在-iOS-8-0-之后支持"><span class="nav-number">3.</span> <span class="nav-text">仅在 iOS 8.0 之后支持</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
     </div>
   </aside>
@@ -584,6 +764,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
