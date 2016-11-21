@@ -108,7 +108,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/11/21/TouchID-的集成开发说明/index.html">
 <meta property="og:site_name" content="iOS Developer">
 <meta property="og:description" content="iOS开发之指纹登录集成方案-逻辑设计">
-<meta property="og:updated_time" content="2016-11-21T06:28:05.000Z">
+<meta property="og:updated_time" content="2016-11-21T07:15:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TouchID 的集成开发说明">
 <meta name="twitter:description" content="iOS开发之指纹登录集成方案-逻辑设计">
@@ -364,7 +364,8 @@
 </code></pre><h2 id="TouchID-API官方文档"><a href="#TouchID-API官方文档" class="headerlink" title="TouchID API官方文档:"></a>TouchID API官方文档:</h2><h3 id="API官方文档"><a href="#API官方文档" class="headerlink" title="API官方文档"></a><a href="https://developer.apple.com/library/ios/documentation/LocalAuthentication/Reference/LAContext_Class/index.html" target="_blank" rel="external">API官方文档</a></h3><h2 id="仅在-iOS-8-0-之后支持"><a href="#仅在-iOS-8-0-之后支持" class="headerlink" title="仅在 iOS 8.0 之后支持"></a>仅在 iOS 8.0 之后支持</h2> <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">canEvaluatePolicy:监测设备是否支持TouchID，返回BOOL，并且若不支持，则在NSError里面返回相应状态</div><div class="line">evaluatePolicy:TouchID验证状态，在Block里面返回验证状态BOOL和NSError</div><div class="line">iOS 9.0以后，有更加严密的 TouchID 认证流程，方法如下：</div><div class="line">- (void)evaluateAccessControl:(SecAccessControlRef)accessControl</div><div class="line">                    operation:(LAAccessControlOperation)operation</div><div class="line">              localizedReason:(NSString *)localizedReason</div><div class="line">                        reply:(void(^)(BOOL success, NSError * __nullable error))reply</div><div class="line">NS_AVAILABLE(10_11, 9_0) __WATCHOS_AVAILABLE(3.0) __TVOS_UNAVAILABLE;</div></pre></td></tr></table></figure>
 <h2 id="逻辑流程设计："><a href="#逻辑流程设计：" class="headerlink" title="逻辑流程设计："></a>逻辑流程设计：</h2><pre><code>在设备第一次使用指纹登录之前，必须先登录原有的账号（app注册账号），进行设备（用户）绑定。
 </code></pre><p> 绑定TouchID举例说明：<br> 1、开启：在app登录后，比如：在“用户信息－安全”，点击开启“指纹登录”；<br> 2、验证TouchID：检测当前设备是否支持TouchID，若支持则发起TouchID验证；<br> 3、生成设备账号/密码：TouchID验证通过后，根据当前已登录的账号和硬件设备Token，生成设备账号/密码（规则可自定，密码要长要复杂），并保存在keychain；<br> 4、绑定：生成设备账号/密码后，将原账号及设备账号/密码，加密后发送到服务端进行绑定；<br> 5、成功：验证原账号及设备账号有效后，返回相应状态，绑定成功则完成整个TouchID（设备）绑定流程。</p>
-<p> 使用已经绑定的TouchID登录：<br>    在设备（用户）绑定之后，并且用户账号退出后，可以使用指纹登录，若当前设备未绑定，则不会出现“指纹登<br> 录”按钮流程说明：<br> 1、TouchID登录：在用户登录界面，点击“指纹登录”；<br> 2、验证TouchID：检测当前设备是否支持TouchID，若支持则发起TouchID验证；<br> 3、登录：读取app在本机的设备账号/密码，调用设备登录接口，发起登录请求；<br> 4、成功：验证设备账号/密码后，返回相应状态，登录成功则完成整个TouchID登录流程。</p>
+<p> 使用已经绑定的TouchID登录：<br>    在设备（用户）绑定之后，并且用户账号退出后，可以使用指纹登录，若当前设备未绑定，则不会出现“指纹登<br> 录”按钮。</p>
+<h3 id="流程说明："><a href="#流程说明：" class="headerlink" title="流程说明："></a>流程说明：</h3><p> 1、TouchID登录：在用户登录界面，点击“指纹登录”；<br> 2、验证TouchID：检测当前设备是否支持TouchID，若支持则发起TouchID验证；<br> 3、登录：读取app在本机的设备账号/密码，调用设备登录接口，发起登录请求；<br> 4、成功：验证设备账号/密码后，返回相应状态，登录成功则完成整个TouchID登录流程。</p>
 <p> 需要导入LocalAuthentication.framework</p>
 <p> 特别注意：在使用的过程中，看清属性是在 iOS XX_0 几之后才支持才允许使用的，很多属性和特性都是随着机型的迭代而新增的；使用不当会崩溃哟。用TouchID进行验证登录，尤其涉及到安全和隐私问题，这方面，我们尤其要重视！！！</p>
 
@@ -654,7 +655,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#说明："><span class="nav-number">1.</span> <span class="nav-text">说明：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TouchID-API官方文档"><span class="nav-number">2.</span> <span class="nav-text">TouchID API官方文档:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#API官方文档"><span class="nav-number">2.1.</span> <span class="nav-text">API官方文档</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#仅在-iOS-8-0-之后支持"><span class="nav-number">3.</span> <span class="nav-text">仅在 iOS 8.0 之后支持</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#逻辑流程设计："><span class="nav-number">4.</span> <span class="nav-text">逻辑流程设计：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#说明："><span class="nav-number">1.</span> <span class="nav-text">说明：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TouchID-API官方文档"><span class="nav-number">2.</span> <span class="nav-text">TouchID API官方文档:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#API官方文档"><span class="nav-number">2.1.</span> <span class="nav-text">API官方文档</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#仅在-iOS-8-0-之后支持"><span class="nav-number">3.</span> <span class="nav-text">仅在 iOS 8.0 之后支持</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#逻辑流程设计："><span class="nav-number">4.</span> <span class="nav-text">逻辑流程设计：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#流程说明："><span class="nav-number">4.1.</span> <span class="nav-text">流程说明：</span></a></li></ol></li></ol></div>
             
 
           </div>
