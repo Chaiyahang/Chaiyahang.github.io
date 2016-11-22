@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+    
+    <entry>
+      <title><![CDATA[TouchID 的集成开发说明]]></title>
+      <url>%2F2016%2F11%2F21%2FTouchID-%E7%9A%84%E9%9B%86%E6%88%90%E5%BC%80%E5%8F%91%E8%AF%B4%E6%98%8E%2F</url>
+      <content type="text"><![CDATA[说明：TouchID 指纹识别是iPhone 5s设备新增的一项重大功能，用于数据加密和安全。而在iOS8.0 以后也向第三方开放了相应功能API，我们可以利用这个API做相应的用户验证和登录的功能，省去输入密码的环节，提高登录的用户体验。 TouchID API官方文档:API官方文档仅在 iOS 8.0 之后支持 12345678canEvaluatePolicy:监测设备是否支持TouchID，返回BOOL，并且若不支持，则在NSError里面返回相应状态evaluatePolicy:TouchID验证状态，在Block里面返回验证状态BOOL和NSErroriOS 9.0以后，有更加严密的 TouchID 认证流程，方法如下：- (void)evaluateAccessControl:(SecAccessControlRef)accessControl operation:(LAAccessControlOperation)operation localizedReason:(NSString *)localizedReason reply:(void(^)(BOOL success, NSError * __nullable error))replyNS_AVAILABLE(10_11, 9_0) __WATCHOS_AVAILABLE(3.0) __TVOS_UNAVAILABLE; 逻辑流程设计：在设备第一次使用指纹登录之前，必须先登录原有的账号（app注册账号），进行设备（用户）绑定。 绑定TouchID举例说明： 1、开启：在app登录后，比如：在“用户信息－安全”，点击开启“指纹登录”； 2、验证TouchID：检测当前设备是否支持TouchID，若支持则发起TouchID验证； 3、生成设备账号/密码：TouchID验证通过后，根据当前已登录的账号和硬件设备Token，生成设备账号/密码（规则可自定，密码要长要复杂），并保存在keychain； 4、绑定：生成设备账号/密码后，将原账号及设备账号/密码，加密后发送到服务端进行绑定； 5、成功：验证原账号及设备账号有效后，返回相应状态，绑定成功则完成整个TouchID（设备）绑定流程。 使用已经绑定的TouchID登录： 在设备（用户）绑定之后，并且用户账号退出后，可以使用指纹登录，若当前设备未绑定，则不会出现“指纹登 录”按钮。 流程说明： 1、TouchID登录：在用户登录界面，点击“指纹登录”； 2、验证TouchID：检测当前设备是否支持TouchID，若支持则发起TouchID验证； 3、登录：读取app在本机的设备账号/密码，调用设备登录接口，发起登录请求； 4、成功：验证设备账号/密码后，返回相应状态，登录成功则完成整个TouchID登录流程。 需要导入LocalAuthentication.framework 特别注意：在使用的过程中，看清属性是在 iOS XX_0 几之后才支持才允许使用的，很多属性和特性都是随着机型的迭代而新增的；使用不当会崩溃哟。用TouchID进行验证登录，尤其涉及到安全和隐私问题，这方面，我们尤其要重视！！！]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[站在岁月之巅放牧心灵]]></title>
+      <url>%2F2016%2F11%2F18%2F%E7%AB%99%E5%9C%A8%E5%B2%81%E6%9C%88%E4%B9%8B%E5%B7%85%E6%94%BE%E7%89%A7%E5%BF%83%E7%81%B5%2F</url>
+      <content type="text"><![CDATA[生命，是一树花开， 或安静或热烈，或寂寞或璀璨。 — 日子，在岁月的年轮中渐次厚重，那些天真的、跃动的、抑或沉思的灵魂，在繁华与喧嚣中，被刻上深深浅浅、或浓或淡的印痕。 很欣赏这样一句话：生命，是一场虚妄。其实，经年过往，每个人何尝不是在这场虚妄里跋涉?在真实的笑里哭着，在真实的哭里笑着，一笺烟雨，半帘幽梦，许多时候，我们不得不承认：生活，不是不寂寞，只是不想说。 于无声处倾听凡尘落素，渐渐明白：人生，总会有许多无奈，希望、失望、憧憬、彷徨，苦过了，才知甜蜜;痛过了，才懂坚强;傻过了，才会成长。生命中，总有一些令人唏嘘的空白，有些人，让你牵挂，却不能相守;有些东西，让你羡慕，却不能拥有;有些错过，让你留恋，却终生遗憾。 在这喧闹的凡尘，我们需要有适合自己的地方，用来安放灵魂。也许，是一座安静宅院;也许，是一本无字经书;也许，是一条迷津小路。只要是自己心之所往，便是驿站，为了将来起程时，不再那么迷惘。 红尘三千丈，念在山水间。生活，不总是一帆风顺。因为爱，所以放手;因为放手，所以沉默;因为一份懂得，所以安心着一个回眸。也许，有风有雨的日子，才承载了生命的厚重;风轻云淡的日子，更适于静静领悟。 深深懂得：这世界上，并不是所有的东西都符合想象。有些时候，山是水的故事，云是风的故事;有些时候，星不是夜的故事，情不是爱的故事。生命的旅途中，许多人走着、走着，就散了;许多事看着、看着，就淡了;许多梦做着、做着，就断了;许多泪流着、流着，就干了。人生，原本就是风尘中的沧海桑田，只是，回眸处，世态炎凉演绎成了苦辣酸甜。 喜欢那种淡到极致的美，不急不躁，不温不火，款步有声，舒缓有序;一弯浅笑，万千深情，尘烟几许，浅思淡行。于时光深处，静看花开花谢，虽历尽沧桑，仍含笑一腔温暖如初。其实，不是不深情，是曾经情太深;不是不懂爱，是爱过知酒浓。生活的阡陌中，没有人改变得了纵横交错的曾经，只是，在渐行渐远的回望里，那些痛过的、哭过的，都演绎成了坚强;那些不忍遗忘的、念念不忘的，都风干成了风景。 站在岁月之巅放牧心灵，山一程，水一程，红尘、沧桑、流年、清欢，一个人的夜晚，我们终于学会了：于一怀淡泊中，笑望两个人的白月光。 盈一抹领悟，收藏点点滴滴的快乐，经年流转，透过指尖的温度，期许岁月静好，这一路走来，你会发现，生活于我们，温暖，一直是一种牵引，不是吗?于生活的海洋中踏浪，云帆尽头，轻回眸，处处是别有洞天，云淡风轻。 有一种经年叫历尽沧桑，有一种远眺叫含泪微笑，有一种追求叫浅行静思，有一种美丽叫淡到极致。给生命一个微笑的理由吧，别让自己的心承载太多的负重;给自己一个取暖的方式吧，以风的执念求索，以莲的姿态恬淡，盈一抹微笑，将岁月打磨成人生枝头最美的风景。]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[仓央嘉措情诗]]></title>
+      <url>%2F2016%2F11%2F16%2F%E4%BB%93%E5%A4%AE%E5%98%89%E6%8E%AA%E6%83%85%E8%AF%97%2F</url>
+      <content type="text"><![CDATA[见与不见1234567891011121314151617你见，或者不见我 我就在那里 不悲不喜 你念，或者不念我 情就在那里 不来不去 你爱，或者不爱我 爱就在那里 不增不减 你跟，或者不跟我 我的手就在你手里 不舍不弃 来我的怀里 或者 让我住进你的心里 默然 相爱 寂静 欢喜 想要查看完整版 请点击 仓央嘉措的诗集（完整版）]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[关于我]]></title>
+      <url>%2F2016%2F11%2F16%2F%E5%85%B3%E4%BA%8E%E6%88%91%2F</url>
+      <content type="text"><![CDATA[你一旦心有所向，自然会身之所往！You’ll walk when you has someplace to go!知乎@柴亚航微博@柴亚航简书@柴亚航“站在岁月之巅放牧心灵，山一程，水一程，红尘、沧桑、流年、清欢，一个人的夜晚，我们终于学会了：于一杯淡泊中，笑望两个人的白月光。”]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[Hello World]]></title>
+      <url>%2F2016%2F11%2F16%2Fhello-world%2F</url>
+      <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+    </entry>
+
+    
+  
+  
+</search>
