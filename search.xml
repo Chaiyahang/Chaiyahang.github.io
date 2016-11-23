@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[忆南工]]></title>
+      <url>%2F2016%2F11%2F23%2F%E5%BF%86%E5%8D%97%E5%B7%A5%2F</url>
+      <content type="text"><![CDATA[忆南工 能记起刚来南工的时候，香樟林里的香樟轻轻地摇着叶子，如今，校园里已是满地的枫叶和银杏叶，风很大，但人心却很暖。 昔我往矣，杨柳依依，今我来思，雨雪霏霏。 雪使我们感受到生命的美丽和短暂，使我们感到尽管存在敌意，可是人与人之间是非常相似的，还使我们感到时空的广阔和人世的狭窄。所以雪下得越大，人与人之间的距离越小，它似乎盖住了敌意、急躁和愤怒，使人与人之间更加接近。 苍茫白雪间，群屋静立。即使正在下着雪，我们也要在我们的路上。不管过程和结果，看看陌生人群和风景，俘获一颗能装下喜欢雪的心，初雪，只有你最美。 愿初雪不渡我，恋者有来生。 查看原文，请点击 原文链接@南工]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[TouchID 的集成开发说明]]></title>
       <url>%2F2016%2F11%2F21%2FTouchID-%E7%9A%84%E9%9B%86%E6%88%90%E5%BC%80%E5%8F%91%E8%AF%B4%E6%98%8E%2F</url>
       <content type="text"><![CDATA[说明：TouchID 指纹识别是iPhone 5s设备新增的一项重大功能，用于数据加密和安全。而在iOS8.0 以后也向第三方开放了相应功能API，我们可以利用这个API做相应的用户验证和登录的功能，省去输入密码的环节，提高登录的用户体验。 TouchID API官方文档:API官方文档仅在 iOS 8.0 之后支持 12345678canEvaluatePolicy:监测设备是否支持TouchID，返回BOOL，并且若不支持，则在NSError里面返回相应状态evaluatePolicy:TouchID验证状态，在Block里面返回验证状态BOOL和NSErroriOS 9.0以后，有更加严密的 TouchID 认证流程，方法如下：- (void)evaluateAccessControl:(SecAccessControlRef)accessControl operation:(LAAccessControlOperation)operation localizedReason:(NSString *)localizedReason reply:(void(^)(BOOL success, NSError * __nullable error))replyNS_AVAILABLE(10_11, 9_0) __WATCHOS_AVAILABLE(3.0) __TVOS_UNAVAILABLE; 逻辑流程设计：在设备第一次使用指纹登录之前，必须先登录原有的账号（app注册账号），进行设备（用户）绑定。 绑定TouchID举例说明： 1、开启：在app登录后，比如：在“用户信息－安全”，点击开启“指纹登录”； 2、验证TouchID：检测当前设备是否支持TouchID，若支持则发起TouchID验证； 3、生成设备账号/密码：TouchID验证通过后，根据当前已登录的账号和硬件设备Token，生成设备账号/密码（规则可自定，密码要长要复杂），并保存在keychain； 4、绑定：生成设备账号/密码后，将原账号及设备账号/密码，加密后发送到服务端进行绑定； 5、成功：验证原账号及设备账号有效后，返回相应状态，绑定成功则完成整个TouchID（设备）绑定流程。 使用已经绑定的TouchID登录： 在设备（用户）绑定之后，并且用户账号退出后，可以使用指纹登录，若当前设备未绑定，则不会出现“指纹登 录”按钮。 流程说明： 1、TouchID登录：在用户登录界面，点击“指纹登录”； 2、验证TouchID：检测当前设备是否支持TouchID，若支持则发起TouchID验证； 3、登录：读取app在本机的设备账号/密码，调用设备登录接口，发起登录请求； 4、成功：验证设备账号/密码后，返回相应状态，登录成功则完成整个TouchID登录流程。 需要导入LocalAuthentication.framework 特别注意：在使用的过程中，看清属性是在 iOS XX_0 几之后才支持才允许使用的，很多属性和特性都是随着机型的迭代而新增的；使用不当会崩溃哟。用TouchID进行验证登录，尤其涉及到安全和隐私问题，这方面，我们尤其要重视！！！]]></content>
