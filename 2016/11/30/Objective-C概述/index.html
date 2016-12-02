@@ -108,7 +108,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/11/30/Objective-C概述/index.html">
 <meta property="og:site_name" content="iOS Developer">
 <meta property="og:description" content="学而不思则罔,思而不学则殆">
-<meta property="og:updated_time" content="2016-12-02T09:16:49.000Z">
+<meta property="og:updated_time" content="2016-12-02T09:19:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Objective-C概述">
 <meta name="twitter:description" content="学而不思则罔,思而不学则殆">
@@ -439,9 +439,9 @@
       
 
       
-        <h3 id="Objective-C的起源"><a href="#Objective-C的起源" class="headerlink" title="Objective-C的起源"></a>Objective-C的起源</h3><pre><code>Objective-C与 C++、Java、C#等面向对象的语言类似，不过很多方面有所差别。若是使用过一种面向对象的开发语言，那么就能理解Objective-C所用的『范式和模板』了。然而，语法上会略显陌生，因为Objective-C使用的是&quot;消息结构&quot;而非&quot;函数调用&quot;。Objective-C是由 
-[Smalltalk](https://en.wikipedia.org/wiki/Smalltalk)演化而来，后者是消息型语言的鼻祖。他们之间的调用看起来就是这样：
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">//Messaging （Objective-C）</div><div class="line">Object *obj = [Object new];</div><div class="line">[obj performWith:parameter1 and:parameter2];</div><div class="line"></div><div class="line">//Function calling (C++)</div><div class="line">Object *obj = [Object new];</div><div class="line">obj-&gt;perform(parameter1,parameter2);</div></pre></td></tr></table></figure>
+        <h3 id="Objective-C的起源"><a href="#Objective-C的起源" class="headerlink" title="Objective-C的起源"></a>Objective-C的起源</h3><pre><code>Objective-C与 C++、Java、C#等面向对象的语言类似，不过很多方面有所差别。若是使用过一种面向对象的开发语
+</code></pre><p>言，那么就能理解Objective-C所用的『范式和模板』了。然而，语法上会略显陌生，因为Objective-C使用的是”消息结构”而非”函数调用”。Objective-C是由Smalltalk演化而来，后者是消息型语言的鼻祖。他们之间的调用看起来就是这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">//Messaging （Objective-C）</div><div class="line">Object *obj = [Object new];</div><div class="line">[obj performWith:parameter1 and:parameter2];</div><div class="line"></div><div class="line">//Function calling (C++)</div><div class="line">Object *obj = [Object new];</div><div class="line">obj-&gt;perform(parameter1,parameter2);</div></pre></td></tr></table></figure>
 <pre><code>关键的区别在于：使用消息结构的语言，其运行时所执行的代码是由运行时环境决定的；而使用函数调用的语言，则由编译器决定。如果上例代码中调用的函数是多态的，那么在运行时就要按照&quot;虚方法表&quot;(virture method table)来查出到底应该执行哪个函数实现。而采用消息结构的语言，不论是否多态，总是在运行时才会去查找所要执行的方法。
 
 Notes：virture method table是编程语言为实现&quot;动态派发&quot;（dynamic dispatch）或 &quot;运行时方法绑定&quot;（runtime method binding） 而采用的一种机制。
