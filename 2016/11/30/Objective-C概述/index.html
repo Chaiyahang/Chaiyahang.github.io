@@ -108,7 +108,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/11/30/Objective-C概述/index.html">
 <meta property="og:site_name" content="iOS Developer">
 <meta property="og:description" content="学而不思则罔,思而不学则殆">
-<meta property="og:updated_time" content="2016-12-14T09:36:48.000Z">
+<meta property="og:updated_time" content="2016-12-14T09:40:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Objective-C概述">
 <meta name="twitter:description" content="学而不思则罔,思而不学则殆">
@@ -485,13 +485,12 @@ Notes：virture method table是编程语言为实现&quot;动态派发&quot;（d
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">SCPerson *person= [SCPerson new];</div><div class="line">person.firstName = @&quot;CYH&quot;;</div><div class="line">Same As:</div><div class="line">[person setFirstName:@&quot;CYH&quot;];</div><div class="line"></div><div class="line">NSString *name = person.firstName;</div><div class="line">Same As:</div><div class="line">NSString *name = [person firstName];</div></pre></td></tr></table></figure>
 <p> 属性拥有的特质分为四类：</p>
-<p> 原子性：在默认情况下，由编译器所合成的方法会通过锁定机制确保其原子性（atomicity）。如果属性具备 nonatomic特质，则不使用同步锁。请注意，如果某属性不具备 nonatomic特质那它就是原子的 atomic。</p>
-<p> 读/写权限：</p>
-<blockquote>
+<h5 id="原子性："><a href="#原子性：" class="headerlink" title="原子性："></a>原子性：</h5><p> 在默认情况下，由编译器所合成的方法会通过锁定机制确保其原子性（atomicity）。如果属性具备 nonatomic特质，则不使用同步锁。请注意，如果某属性不具备 nonatomic特质那它就是原子的 atomic。</p>
+<h5 id="读-写权限："><a href="#读-写权限：" class="headerlink" title="读/写权限："></a>读/写权限：</h5><blockquote>
 <p>1、具备 readwrite 特质的属性拥有 getter 和 setter 方法。</p>
 <p>2、具备 readonly 特质属性只有 getter 方法。</p>
 </blockquote>
-<p> 内存管理语义：属性用于封装数据，而数据必须要有”具体的所有权语义”（concrete ownership semantic）。</p>
+<h5 id="内存管理语义："><a href="#内存管理语义：" class="headerlink" title="内存管理语义："></a>内存管理语义：</h5><p> 属性用于封装数据，而数据必须要有”具体的所有权语义”（concrete ownership semantic）。</p>
 <blockquote>
 <p>assign: setter 方法只会执行针对”纯量类型”（scalar type,e.g:CGFloat和 NSInteger）的简单赋值操作</p>
 <p>strong: 定义了一种拥有关系（ownership relationship）。为这种属性设置新值时，setter 方法会先保留新值，并释放旧值，然后再将新值设置上去。</p>
@@ -499,7 +498,8 @@ Notes：virture method table是编程语言为实现&quot;动态派发&quot;（d
 <p>unsafe_unretained:  此特质的语义和 assign 相同，但是它适用于对象类型（object type），该特质表达一种非拥有关系（不保留，unretained），当目标对象遭到摧毁时，属性值不会清空（不安全，unsafe），这一点与 weak 有区别。</p>
 <p>copy: 此特质所述的关系和 strong 类似，然而设置方法并不保留新值，而是将其复制 （copy）。当熟悉类型是 NSString* 时候，经常用此特质来保护其封装性。因为传递给 setter 方法的新值有可能指向一个 NSMutableString 类的实例。这个类是 NSString 的子类，表示一种可以修改其值的字符串，此时若不拷贝字符串，那么设置完属性之后，字符串的值可能会在对象不知情的情况下遭人更改。所以，就要拷贝一份不可变的字符串，确保对象中的字符串不会无意简变动。只要实现属性所用的对象是可变的，就应该在设置新属性值时拷贝一份。</p>
 </blockquote>
-<p> 方法名：可以通过 getter=<name> 和 setter=<name> 指定存取方法的方法名</name></name></p>
+<h5 id="方法名："><a href="#方法名：" class="headerlink" title="方法名："></a>方法名：</h5><p>可以通过 getter=<name> 和 setter=<name> 指定存取方法的方法名</name></name></p>
+<p>注释：不应该在 init （或 dealloc） 方法中调用存取方法。</p>
 <!-- #### 动态绑定（Dynamic Binding） -->
 <h4 id="未完待续，持续补充…"><a href="#未完待续，持续补充…" class="headerlink" title="未完待续，持续补充….."></a>未完待续，持续补充…..</h4>
       
@@ -847,7 +847,7 @@ Notes：virture method table是编程语言为实现&quot;动态派发&quot;（d
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Objective-C的起源"><span class="nav-number">1.</span> <span class="nav-text">Objective-C的起源</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#在类的头文件中尽量少引入其他头文件"><span class="nav-number">1.1.</span> <span class="nav-text">在类的头文件中尽量少引入其他头文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多用字面量语法（literal-syntax），少用与之等价的方法"><span class="nav-number">1.2.</span> <span class="nav-text">多用字面量语法（literal syntax），少用与之等价的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#字面数值"><span class="nav-number">1.2.1.</span> <span class="nav-text">字面数值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#字面数组"><span class="nav-number">1.2.2.</span> <span class="nav-text">字面数组</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#字面字典"><span class="nav-number">1.2.3.</span> <span class="nav-text">字面字典</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多用类型常量，少用『-define』-预处理指令"><span class="nav-number">1.3.</span> <span class="nav-text">多用类型常量，少用『#define』 预处理指令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用枚举表示状态、选项、状态吗"><span class="nav-number">1.4.</span> <span class="nav-text">用枚举表示状态、选项、状态吗</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象、消息、运行期"><span class="nav-number">2.</span> <span class="nav-text">对象、消息、运行期</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#未完待续，持续补充…"><span class="nav-number">2.1.</span> <span class="nav-text">未完待续，持续补充…..</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Objective-C的起源"><span class="nav-number">1.</span> <span class="nav-text">Objective-C的起源</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#在类的头文件中尽量少引入其他头文件"><span class="nav-number">1.1.</span> <span class="nav-text">在类的头文件中尽量少引入其他头文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多用字面量语法（literal-syntax），少用与之等价的方法"><span class="nav-number">1.2.</span> <span class="nav-text">多用字面量语法（literal syntax），少用与之等价的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#字面数值"><span class="nav-number">1.2.1.</span> <span class="nav-text">字面数值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#字面数组"><span class="nav-number">1.2.2.</span> <span class="nav-text">字面数组</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#字面字典"><span class="nav-number">1.2.3.</span> <span class="nav-text">字面字典</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多用类型常量，少用『-define』-预处理指令"><span class="nav-number">1.3.</span> <span class="nav-text">多用类型常量，少用『#define』 预处理指令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用枚举表示状态、选项、状态吗"><span class="nav-number">1.4.</span> <span class="nav-text">用枚举表示状态、选项、状态吗</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象、消息、运行期"><span class="nav-number">2.</span> <span class="nav-text">对象、消息、运行期</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#原子性："><span class="nav-number">2.0.1.</span> <span class="nav-text">原子性：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#读-写权限："><span class="nav-number">2.0.2.</span> <span class="nav-text">读/写权限：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#内存管理语义："><span class="nav-number">2.0.3.</span> <span class="nav-text">内存管理语义：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#方法名："><span class="nav-number">2.0.4.</span> <span class="nav-text">方法名：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#未完待续，持续补充…"><span class="nav-number">2.1.</span> <span class="nav-text">未完待续，持续补充…..</span></a></li></ol></li></ol></div>
             
 
           </div>
