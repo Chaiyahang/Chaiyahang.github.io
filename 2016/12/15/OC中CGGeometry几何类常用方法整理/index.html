@@ -102,16 +102,16 @@
 
 
 
-<meta name="description" content="CGGeometry 何类常用方法简单整理">
+<meta name="description" content="CGGeometry几何类常用方法简单整理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Objective-C 中CGGeometry 何类常用方法简单整理">
-<meta property="og:url" content="http://yoursite.com/2016/12/15/Objective-C-中CGGeometry-何类常用方法简单整理/index.html">
+<meta property="og:title" content="OC中CGGeometry几何类常用方法整理">
+<meta property="og:url" content="http://yoursite.com/2016/12/15/OC中CGGeometry几何类常用方法整理/index.html">
 <meta property="og:site_name" content="iOS Developer">
-<meta property="og:description" content="CGGeometry 何类常用方法简单整理">
-<meta property="og:updated_time" content="2016-12-15T08:18:23.000Z">
+<meta property="og:description" content="CGGeometry几何类常用方法简单整理">
+<meta property="og:updated_time" content="2016-12-15T08:36:23.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Objective-C 中CGGeometry 何类常用方法简单整理">
-<meta name="twitter:description" content="CGGeometry 何类常用方法简单整理">
+<meta name="twitter:title" content="OC中CGGeometry几何类常用方法整理">
+<meta name="twitter:description" content="CGGeometry几何类常用方法简单整理">
 
 
 
@@ -139,13 +139,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/12/15/Objective-C-中CGGeometry-何类常用方法简单整理/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/12/15/OC中CGGeometry几何类常用方法整理/"/>
 
 
 
 
 
-  <title> Objective-C 中CGGeometry 何类常用方法简单整理 | iOS Developer </title>
+  <title> OC中CGGeometry几何类常用方法整理 | iOS Developer </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -328,7 +328,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/15/Objective-C-中CGGeometry-何类常用方法简单整理/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/15/OC中CGGeometry几何类常用方法整理/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="柴亚航">
@@ -352,7 +352,7 @@
             
             
               
-                Objective-C 中CGGeometry 何类常用方法简单整理
+                OC中CGGeometry几何类常用方法整理
               
             
           </h1>
@@ -399,8 +399,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/12/15/Objective-C-中CGGeometry-何类常用方法简单整理/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/15/Objective-C-中CGGeometry-何类常用方法简单整理/" itemprop="commentCount"></span>
+                <a href="/2016/12/15/OC中CGGeometry几何类常用方法整理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/15/OC中CGGeometry几何类常用方法整理/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -410,7 +410,7 @@
 
           
           
-             <span id="/2016/12/15/Objective-C-中CGGeometry-何类常用方法简单整理/" class="leancloud_visitors" data-flag-title="Objective-C 中CGGeometry 何类常用方法简单整理">
+             <span id="/2016/12/15/OC中CGGeometry几何类常用方法整理/" class="leancloud_visitors" data-flag-title="OC中CGGeometry几何类常用方法整理">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -424,7 +424,7 @@
 
           
               <div class="post-description">
-                  CGGeometry 何类常用方法简单整理
+                  CGGeometry几何类常用方法简单整理
               </div>
           
 
@@ -439,7 +439,16 @@
       
 
       
-        <p>Objective-c 中CGGeometry 何类常  法简单整  CGGeometry<br>1、创建一个几何原始数值<br>CGPoint CGPointMake(CGPoint A,CGPoint B<br>CGGeometry参考定义几何结构和功能,操作简单。数据结构中的一个点 CGPoint代表在一个二维坐标系统。数据结构的位置和尺寸CGRect代表的<br>一个长方形。数据结构的尺寸CGSize代表宽度和高度。<br> )<br>CGSize CGSizeMake(CGFloat width,CGFloat height)<br>根据指定长宽创建一个CGSize 2、修改矩形<br>CGRectDivide<br>CGRect CGRectInset(CGRect rect,CGFloat dx,CGFloat dy) 返回一个比原矩形大或小的矩形，但是中心点<br>是相同的<br>CGRect CGRectIntegral(CGRect A)<br>将矩形A的值转变成整数，得到一个最小的矩形， CGRect CGRectIntersection:(CGRect A，CGRect B)<br>获取两个矩形相交处所的矩形，没有相交返回NULL，用 CGRectIsNull来检测<br>CGRectOffset CGRectStandardize CGRectUnion<br>3、比较数值<br>bool CGPointEqualToPoint(CGPoint A,CGPoint B)<br>返回两个点是否相等<br>bool CGSizeEqualToSize(CGSize A，CGSize B)<br>CGSizeAB是否相等<br>bool CGRectEqualToRect(CGRect A，CGRect B)<br>矩形AB的位置大小是否相等<br>bool CGRectIntersectsRect(CGRect A，CGRect B)<br>矩形AB是否相交，可用来判断精灵是否离开了屏幕<br>4、检查<br>bool CGRectContainsPoint(CGRect A, CGPoint B)<br>返回一个指定坐标点<br>CGRect<br>CGRectMake(CGFloat x,CGFloat y,CGFloat width,CGFloat height)<br>     根据指定的坐标和大小创建一个矩形<br>检测矩形A是否包含指定的点B bool CGRectContainsRect(CGRect A，CGRect B)<br>检测矩形A是否包含矩形B<br>5、获取最大值、中等职和最小值<br>CGFloat CGFloat CGFloat CGFloat CGFloat<br>CGFloat CGRectGetMinX(CGRect A) 获取矩形x坐标的最小值 CGRectGetMinY(CGRect A)<br>获取矩形y坐标的最小值 CGRectGetMidX(CGRect A)<br>获取矩形x坐标的中间值 CGRectGetMidY(CGRect A)<br>获取矩形y坐标的中间值 CGRectGetMaxX(CGRect A)<br>获取矩形x坐标的最大值 CGRectGetMaxY(CGRect A)<br>获取矩形y坐标的最大值<br>6、获取高和宽<br>CGFloat CGRectGetHeight(CGRectA)<br>获取矩形A的高 CGFloat CGRectGetWidth(CGRectA)<br>获取矩形A的宽<br>7、检测矩形是否存在或是无穷大<br>bool CGRectIsEmpty(CGRect A) 矩形A是否长和宽都是0，或者是个NULL<br>bool CGRectIsNull(CGRect A) 矩形A是否为NULL<br>bool CGRectIsInfinite(CGRect A) 矩形A是否无穷大，没有边界</p>
+        <blockquote>
+<p>CGGeometry<br>CGGeometry参考定义几何结构和功能,操作简单。数据结构中的一个点CGPoint代表在一个二维坐标系统。数据结构的位置和尺寸CGRect代表的一个长方形。数据结构的尺寸CGSize代表宽度和高度。</p>
+</blockquote>
+<h3 id="创建一个几何原始数值"><a href="#创建一个几何原始数值" class="headerlink" title="创建一个几何原始数值"></a>创建一个几何原始数值</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">CGPoint  CGPointMake（CGPoint A,CGPoint B）//返回一个指定坐标点  </div><div class="line">CGRect   CGRectMake（CGFloat x,CGFloat y,CGFloat width,CGFloat height）//根据指定的坐标和大小创建一个矩形</div><div class="line">CGSize   CGSizeMake（CGFloat width,CGFloat height）//根据指定长宽创建一个CGSize</div></pre></td></tr></table></figure>
+<h3 id="修改矩形"><a href="#修改矩形" class="headerlink" title="修改矩形"></a>修改矩形</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">CGRectDivide</div><div class="line">CGRect  CGRectInset（CGRect rect,CGFloat dx,CGFloat dy）//返回一个比原矩形大或小的矩形，但是中心点是相同的</div><div class="line">CGRect CGRectIntegral（CGRect A）//将矩形A的值转变成整数，得到一个最小的矩形，</div><div class="line">CGRect CGRectIntersection:（CGRect A，CGRect B）//获取两个矩形相交处所的矩形，没有相交返回NULL，用CGRectIsNull来检测</div><div class="line">CGRectOffset</div><div class="line">CGRectStandardize</div><div class="line">CGRectUnion</div></pre></td></tr></table></figure>
+<h3 id="比较数值"><a href="#比较数值" class="headerlink" title="比较数值"></a>比较数值</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">bool CGPointEqualToPoint(CGPoint A,CGPoint B) //返回两个点是否相等</div><div class="line">bool CGSizeEqualToSize(CGSize A，CGSize B) //CGSizeAB是否相等</div><div class="line">bool CGRectEqualToRect(CGRect A，CGRect B) //矩形AB的位置大小是否相等</div><div class="line">bool CGRectIntersectsRect(CGRect A，CGRect B) //矩形AB是否相交，可用来判断精灵是否离开了屏幕</div></pre></td></tr></table></figure>
+<h3 id="检查"><a href="#检查" class="headerlink" title="检查"></a>检查</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">bool  CGRectContainsPoint（CGRect A, CGPoint B）//检测矩形A是否包含指定的点B</div><div class="line">bool  CGRectContainsRect（CGRect A，CGRect B）//检测矩形A是否包含矩形B</div></pre></td></tr></table></figure>
+<h3 id="获取最大值、中等职和最小值"><a href="#获取最大值、中等职和最小值" class="headerlink" title="获取最大值、中等职和最小值"></a>获取最大值、中等职和最小值</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">CGFloat   CGRectGetMinX（CGRect A） //获取矩形x坐标的最小值</div><div class="line">CGFloat   CGRectGetMinY（CGRect A) //获取矩形y坐标的最小值 </div><div class="line">CGFloat   CGRectGetMidX（CGRect A） //获取矩形x坐标的中间值 </div><div class="line">CGFloat   CGRectGetMidY（CGRect A） //获取矩形y坐标的中间值 </div><div class="line">CGFloat   CGRectGetMaxX（CGRect A） //获取矩形x坐标的最大值 </div><div class="line">CGFloat   CGRectGetMaxY（CGRect A） //获取矩形y坐标的最大值</div></pre></td></tr></table></figure>
+<h3 id="获取高和宽"><a href="#获取高和宽" class="headerlink" title="获取高和宽"></a>获取高和宽</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">CGFloat  CGRectGetHeight（CGRect A）//获取矩形A的高</div><div class="line">CGFloat  CGRectGetWidth（CGRect A） //获取矩形A的宽</div></pre></td></tr></table></figure>
+<h3 id="检测矩形是否存在或是无穷大"><a href="#检测矩形是否存在或是无穷大" class="headerlink" title="检测矩形是否存在或是无穷大"></a>检测矩形是否存在或是无穷大</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">bool CGRectIsEmpty(CGRect A)    //矩形A是否长和宽都是0，或者是个NULL</div><div class="line">bool CGRectIsNull(CGRect A)     //矩形A是否为NULL</div><div class="line">bool CGRectIsInfinite(CGRect A) //矩形A是否无穷大，没有边界</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -557,8 +566,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/12/15/Objective-C-中CGGeometry-何类常用方法简单整理/"
-           data-title="Objective-C 中CGGeometry 何类常用方法简单整理" data-url="http://yoursite.com/2016/12/15/Objective-C-中CGGeometry-何类常用方法简单整理/">
+      <div class="ds-thread" data-thread-key="2016/12/15/OC中CGGeometry几何类常用方法整理/"
+           data-title="OC中CGGeometry几何类常用方法整理" data-url="http://yoursite.com/2016/12/15/OC中CGGeometry几何类常用方法整理/">
       </div>
     
   </div>
@@ -582,8 +591,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -765,6 +783,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建一个几何原始数值"><span class="nav-number">1.</span> <span class="nav-text">创建一个几何原始数值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改矩形"><span class="nav-number">2.</span> <span class="nav-text">修改矩形</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#比较数值"><span class="nav-number">3.</span> <span class="nav-text">比较数值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检查"><span class="nav-number">4.</span> <span class="nav-text">检查</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取最大值、中等职和最小值"><span class="nav-number">5.</span> <span class="nav-text">获取最大值、中等职和最小值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取高和宽"><span class="nav-number">6.</span> <span class="nav-text">获取高和宽</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检测矩形是否存在或是无穷大"><span class="nav-number">7.</span> <span class="nav-text">检测矩形是否存在或是无穷大</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>
