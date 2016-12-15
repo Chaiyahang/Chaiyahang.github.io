@@ -108,7 +108,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/12/15/OC中CGGeometry几何类常用方法整理/index.html">
 <meta property="og:site_name" content="iOS Developer">
 <meta property="og:description" content="CGGeometry几何类常用方法简单整理">
-<meta property="og:updated_time" content="2016-12-15T08:36:23.000Z">
+<meta property="og:updated_time" content="2016-12-15T08:38:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OC中CGGeometry几何类常用方法整理">
 <meta name="twitter:description" content="CGGeometry几何类常用方法简单整理">
@@ -439,9 +439,7 @@
       
 
       
-        <blockquote>
-<p>CGGeometry<br>CGGeometry参考定义几何结构和功能,操作简单。数据结构中的一个点CGPoint代表在一个二维坐标系统。数据结构的位置和尺寸CGRect代表的一个长方形。数据结构的尺寸CGSize代表宽度和高度。</p>
-</blockquote>
+        <p>CGGeometry参考定义几何结构和功能,操作简单。数据结构中的一个点CGPoint代表在一个二维坐标系统。数据结构的位置和尺寸CGRect代表的一个长方形。数据结构的尺寸CGSize代表宽度和高度。</p>
 <h3 id="创建一个几何原始数值"><a href="#创建一个几何原始数值" class="headerlink" title="创建一个几何原始数值"></a>创建一个几何原始数值</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">CGPoint  CGPointMake（CGPoint A,CGPoint B）//返回一个指定坐标点  </div><div class="line">CGRect   CGRectMake（CGFloat x,CGFloat y,CGFloat width,CGFloat height）//根据指定的坐标和大小创建一个矩形</div><div class="line">CGSize   CGSizeMake（CGFloat width,CGFloat height）//根据指定长宽创建一个CGSize</div></pre></td></tr></table></figure>
 <h3 id="修改矩形"><a href="#修改矩形" class="headerlink" title="修改矩形"></a>修改矩形</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">CGRectDivide</div><div class="line">CGRect  CGRectInset（CGRect rect,CGFloat dx,CGFloat dy）//返回一个比原矩形大或小的矩形，但是中心点是相同的</div><div class="line">CGRect CGRectIntegral（CGRect A）//将矩形A的值转变成整数，得到一个最小的矩形，</div><div class="line">CGRect CGRectIntersection:（CGRect A，CGRect B）//获取两个矩形相交处所的矩形，没有相交返回NULL，用CGRectIsNull来检测</div><div class="line">CGRectOffset</div><div class="line">CGRectStandardize</div><div class="line">CGRectUnion</div></pre></td></tr></table></figure>
 <h3 id="比较数值"><a href="#比较数值" class="headerlink" title="比较数值"></a>比较数值</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">bool CGPointEqualToPoint(CGPoint A,CGPoint B) //返回两个点是否相等</div><div class="line">bool CGSizeEqualToSize(CGSize A，CGSize B) //CGSizeAB是否相等</div><div class="line">bool CGRectEqualToRect(CGRect A，CGRect B) //矩形AB的位置大小是否相等</div><div class="line">bool CGRectIntersectsRect(CGRect A，CGRect B) //矩形AB是否相交，可用来判断精灵是否离开了屏幕</div></pre></td></tr></table></figure>
