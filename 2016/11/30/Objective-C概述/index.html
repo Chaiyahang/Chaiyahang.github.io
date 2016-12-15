@@ -108,7 +108,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/11/30/Objective-C概述/index.html">
 <meta property="og:site_name" content="iOS Developer">
 <meta property="og:description" content="学而不思则罔,思而不学则殆">
-<meta property="og:updated_time" content="2016-12-15T08:14:46.000Z">
+<meta property="og:updated_time" content="2016-12-15T10:01:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Objective-C概述">
 <meta name="twitter:description" content="学而不思则罔,思而不学则殆">
@@ -505,7 +505,21 @@ Notes：virture method table是编程语言为实现&quot;动态派发&quot;（d
 <h5 id="方法名："><a href="#方法名：" class="headerlink" title="方法名："></a>方法名：</h5><p>可以通过 getter=<name> 和 setter=<name> 指定存取方法的方法名</name></name></p>
 <p>注释：不应该在 init （或 dealloc） 方法中调用存取方法。</p>
 <h4 id="在对象内部尽量直接访问实例变量"><a href="#在对象内部尽量直接访问实例变量" class="headerlink" title="在对象内部尽量直接访问实例变量"></a>在对象内部尽量直接访问实例变量</h4><p>1、在对象内部读取数据时，应该直接通过实例变量来读，而写入数据时，则应该通过属性来写<br>2、在初始化方法及 dealloc 方法中，总是应该直接通过实例变量来读写数据<br>3、有时会使用惰性初始化技术配置某分数据，这种情况下，需要通过属性来读取数据。</p>
-<h4 id="理解”对象等同性”这一概念"><a href="#理解”对象等同性”这一概念" class="headerlink" title="理解”对象等同性”这一概念"></a>理解”对象等同性”这一概念</h4><!-- #### 动态绑定（Dynamic Binding） -->
+<h4 id="理解”对象等同性”这一概念"><a href="#理解”对象等同性”这一概念" class="headerlink" title="理解”对象等同性”这一概念"></a>理解”对象等同性”这一概念</h4><blockquote>
+<p>根据”等同性”(equality)来比较对象是一个非常有用的功能。不过，按照==操作符比较出来的结果未必是我们想要的，因为该操作比较的是两个指针本身，而不是其所指的对象。应该使用NSObject协议中声明的”isEqual:”方法来判断两个对象的等同性。一般来说，两个类型不同的对象总是不相等的(unequal)。某些对象提供了特殊的”等同性判定方法”(equality-checking method),如果已经知道两个受测对象都属干同一个类，那么就可以使用这种方法。以下述代码为例： </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">NSString *foo = @&quot;Badge:23&quot;; </div><div class="line">NSString *bar = [NSString stringWithFormat: @&quot;Badge:%i&quot;, 123]; </div><div class="line">BOOL equalA = (foo == bar); //&lt; equalA = NO </div><div class="line">BOOL equalB = [foo isEqual:bar]; //&lt; equalB = YES </div><div class="line">BOOL equalC = [foo isEqualToString:bar]; //&lt; equalC = YES</div></pre></td></tr></table></figure>
+<blockquote>
+<p>大家可以看到==与等同性判断方法之间的差别。NSString类实现了一个自己独有的同性判断方法，名叫” isEqualToString:”。传递给该方法的对象必须是NSString， 否则结果未定义(undefined).调用该方法比调用”isEqual:”方法快，后者还要执行额外的步骤，因为他不知道受测对象的类型。</p>
+</blockquote>
+<p>NSObject协议中有两个用于判断等同性的关键方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">- (BOOL)isEqual:(id)object; </div><div class="line"> - (NSUInteger)hash;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>NSObject类对这两个方法的默认实现是：当且仅当其”指针值” (pointer value)完全相等时，这两个对象才相等。若想在自定义的对象中正确覆写这些方法，就必须先理解其约定(contract)。 如果 “ isEqual:” 方法判定两个对象相等，那么其hash方法也必须返回同一个值。但是，如果两个对象的hash方法返回同一个值，那么”isEqual:”方法未必会认为两者相等。<br>比如有下面这个类：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">@interface SCPerson : NSObject </div><div class="line">@property (nonatomic, copy) NSString *firstName; </div><div class="line">@property (nonatomic, COPY) NSString *lastName; </div><div class="line">@property (nonatomic, assign) NSUInteger age; </div><div class="line">@ end</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>我们认为，如果两个SCPerson的所有字段均相等，那么这西个对象就相等。于是<br>isEqual:”方法可以写成：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">- (Bool） isEqual: (id) object &#123;</div><div class="line">//指针类型的比较</div><div class="line">if (self == object) return YES;  </div><div class="line">if ([self class] != [object class]) return NO;</div><div class="line"></div><div class="line">//对象类型的比较</div><div class="line">SCPerson *otherPerson = (SCPerson*)object; </div><div class="line">if (![ firstName isEqualToString:otherPerson.firstName]) return NO; </div><div class="line">if (![_lastName isEqualToString:otherPerson.lastName]) return NO; </div><div class="line">if (_age != otherPerson.age) return NO; </div><div class="line">return YES; </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>首先，直接判断两个指针是否相等。若相等，则其均指向同一对象，所以受测的对象也必定相等。接下来，比较西对象所属的类。若不属于同一个类，则两对象不相等。SCPerson对象当然不可能与SCDog对象相等。不过，有时我们可能认为：一个SCPerson实例可以与其子类（比如SCFanBingBingPerson)实例相等。在继承体系（inheritance hierarchy)中判断等同性时，经常遭遇此类问题。所以实现” isEqual:”方法时要考虑到这种情况.最后，检测每个属性是否相等。只要其中有不相等的属性，就判定两对象不等，否则两对象相等。</p>
+</blockquote>
 <h3 id="未完待续，持续补充…"><a href="#未完待续，持续补充…" class="headerlink" title="未完待续，持续补充….."></a>未完待续，持续补充…..</h3>
       
     </div>
