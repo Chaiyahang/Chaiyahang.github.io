@@ -108,7 +108,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/11/30/Objective-C概述/index.html">
 <meta property="og:site_name" content="iOS Developer">
 <meta property="og:description" content="学而不思则罔,思而不学则殆">
-<meta property="og:updated_time" content="2016-12-27T10:10:01.000Z">
+<meta property="og:updated_time" content="2016-12-27T10:18:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Objective-C概述">
 <meta name="twitter:description" content="学而不思则罔,思而不学则殆">
@@ -566,6 +566,7 @@ Notes：virture method table是编程语言为实现&quot;动态派发&quot;（d
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void objc_removeAssociatedObjects(id object)</div></pre></td></tr></table></figure>
 <p>此方法移除指定对象的全部关联对象。</p>
 <p>​    我们可以把某对象想象成 NSDictionary，把关联到该对象的值理解为字典中的条目，于是，存取关联对象的值就相当于在 NSDictionary 对象上调用[object setObejct:value forKey:key] 与[object valueForKey:key]方法。然而，两者之间有个重要的差别：设置关联对象时用的键（key）是一个<a href="http://en.wikipedia.org/wiki/Opaque_pointer" target="_blank" rel="external">“不透明的指针”(opaque pointer)</a>。 如果在两个键上调用” isEqual:”方法返回的是 YES，那么 NSDictionary 就认为二者相等；然而在设置关联对象的值时，若想令两个键匹配到同一个值，则二者必须是完全相同的指针才行。<strong>鉴于此，在设置关联对象的值时，通常使用静态的全局变量做键（key）。</strong></p>
+<p><a href="http://blog.chaiyahang.com/2016/12/27/Objective-C概述（二）/" target="_blank" rel="external">Objective-C概述（二）</a></p>
 
       
     </div>
