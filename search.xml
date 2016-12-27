@@ -5,7 +5,7 @@
     <entry>
       <title><![CDATA[Objective-C概述（二）]]></title>
       <url>%2F2016%2F12%2F27%2FObjective-C%E6%A6%82%E8%BF%B0%EF%BC%88%E4%BA%8C%EF%BC%89%2F</url>
-      <content type="text"><![CDATA[补充中…..]]></content>
+      <content type="text"><![CDATA[浅析 objc_msgSend的作用​ 在对象上调用方法是 Objective-C 中经常使用的功能。用 Objective-C 的术语说，这叫做”传递消息（亦或消息传递）”。消息有”名称”（name）或”选择子”（selector），可以接受参数，而且可能有返回值。 补充中…..]]></content>
     </entry>
 
     
