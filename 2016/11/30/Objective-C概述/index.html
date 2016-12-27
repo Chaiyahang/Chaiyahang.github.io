@@ -108,7 +108,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/11/30/Objective-C概述/index.html">
 <meta property="og:site_name" content="iOS Developer">
 <meta property="og:description" content="学而不思则罔,思而不学则殆">
-<meta property="og:updated_time" content="2016-12-27T07:48:56.000Z">
+<meta property="og:updated_time" content="2016-12-27T08:26:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Objective-C概述">
 <meta name="twitter:description" content="学而不思则罔,思而不学则殆">
@@ -528,7 +528,37 @@ Notes：virture method table是编程语言为实现&quot;动态派发&quot;（d
 <p>把某对象放入 set 之后，就不要在修改该对象的内容了，如果非要改变就要注意其存在的隐患，并使用相应的应对方法处理可能发生的问题。</p>
 <h4 id="以类簇模式隐藏实现细节"><a href="#以类簇模式隐藏实现细节" class="headerlink" title="以类簇模式隐藏实现细节"></a>以类簇模式隐藏实现细节</h4><p>创建类簇：（工厂模式（Factory pattern）是创建类簇的方法之一）<br>定义抽象基类，每个”实体子类”(concrete subclass)都从基类继承而来；</p>
 <h4 id="在既有类中使用关联对象存放自定义数据"><a href="#在既有类中使用关联对象存放自定义数据" class="headerlink" title="在既有类中使用关联对象存放自定义数据"></a>在既有类中使用关联对象存放自定义数据</h4><p> 所谓关联对象（Associated Object），就是给某些对象关联许多其他对象，这些对象通过”键”来区分。存储对象值得时候，可以指明”存储策略”(storage policy),用以维护相应的”内存管理语义”。</p>
-<h3 id="未完待续，持续补充…"><a href="#未完待续，持续补充…" class="headerlink" title="未完待续，持续补充….."></a>未完待续，持续补充…..</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">关联类型</th>
+<th style="text-align:center">等效的@property属性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">OBJC_ASSOCIATION_ASSIGN</td>
+<td style="text-align:center">assign</td>
+</tr>
+<tr>
+<td style="text-align:center">OBJC_ASSOCIATION_RETAIN_NONATOMIC</td>
+<td style="text-align:center">nonatomic,retain</td>
+</tr>
+<tr>
+<td style="text-align:center">OBJC_ASSOCIATION_COPY_NONATOMIC</td>
+<td style="text-align:center">nonatomic,copy</td>
+</tr>
+<tr>
+<td style="text-align:center">OBJC_ASSOCIATION_RETAIN</td>
+<td style="text-align:center">retain</td>
+</tr>
+<tr>
+<td style="text-align:center">OBJC_ASSOCIATION_COPY</td>
+<td style="text-align:center">copy</td>
+</tr>
+</tbody>
+</table>
+<h3 id="未完待续，持续补充…"><a href="#未完待续，持续补充…" class="headerlink" title="未完待续，持续补充….."></a>未完待续，持续补充…..</h3>
       
     </div>
 
