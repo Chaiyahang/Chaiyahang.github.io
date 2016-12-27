@@ -108,7 +108,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/11/30/Objective-C概述/index.html">
 <meta property="og:site_name" content="iOS Developer">
 <meta property="og:description" content="学而不思则罔,思而不学则殆">
-<meta property="og:updated_time" content="2016-12-27T08:27:16.000Z">
+<meta property="og:updated_time" content="2016-12-27T09:21:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Objective-C概述">
 <meta name="twitter:description" content="学而不思则罔,思而不学则殆">
@@ -558,6 +558,20 @@ Notes：virture method table是编程语言为实现&quot;动态派发&quot;（d
 </tr>
 </tbody>
 </table>
+<p>下列方法可以管理关联对象：</p>
+<ul>
+<li>[ ] void objc_setAssociatedObject(id object,void *key,id value,objc_AssociationPolicy policy)</li>
+</ul>
+<p>此方法以给指定的键和策略为某对象设置关联对象值。</p>
+<ul>
+<li>[ ] id objc_getAssociatedObject(id object,void *key)</li>
+</ul>
+<p>此方法根据指定的键从某对象中获取对应的关联对象值。</p>
+<ul>
+<li>[ ] void objc_removeAssociatedObjects(id object)</li>
+</ul>
+<p>此方法移除指定对象的全部关联对象。</p>
+<p>​    我们可以把某对象想象成 NSDictionary，把关联到该对象的值理解为字典中的条目，于是，存取关联对象的值就相当于在 NSDictionary 对象上调用[object setObejct:value forKey:key] 与[object valueForKey:key]方法。然而，两者之间有个重要的差别：设置关联对象时用的键（key）是一个<a href="http://en.wikipedia.org/wiki/Opaque_pointer" target="_blank" rel="external">“不透明的指针”(opaque pointer)</a>。 如果在两个键上调用” isEqual:”方法返回的是 YES，那么 NSDictionary 就认为二者相等；然而在设置关联对象的值时，若想令两个键匹配到同一个值，则二者必须是完全相同的指针才行。<strong>鉴于此，在设置关联对象的值时，通常使用静态的全局变量做键（key）。</strong></p>
 <p>未完待续，持续补充…..</p>
 
       
