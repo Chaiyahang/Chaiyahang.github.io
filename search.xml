@@ -17,6 +17,13 @@
 
     
     <entry>
+      <title><![CDATA[Git的简单使用命令备注]]></title>
+      <url>%2F2017%2F01%2F04%2FGit%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4%E5%A4%87%E6%B3%A8%2F</url>
+      <content type="text"><![CDATA[Git是目前世界上最先进的分布式版本控制系统（没有之一）。 很多人都知道，Linus在1991年创建了开源的Linux，从此，Linux系统不断发展，已经成为最大的服务器系统软件了。 Linus虽然创建了Linux，但Linux的壮大是靠全世界热心的志愿者参与的，这么多人在世界各地为Linux编写代码，那Linux的代码是如何管理的呢？ ……………………………………… 原文请戳廖雪峰老是的文章 Linus花了两周时间自己用C写了一个分布式版本控制系统，这就是Git！ 创建版本库$ mkdir learngit $ cd learngit $ pwd pwd命令用于显示当前目录。 通过git init命令把这个目录变成Git可以管理的仓库 初始化一个Git仓库，使用git init命令。 添加文件到Git仓库，分两步： 第一步，使用命令git add &lt;file&gt;，注意，可反复多次使用，添加多个文件； 第二步，使用命令git commit，完成。 要随时掌握工作区的状态，使用git status命令。 如果git status告诉你有文件被修改过，用git diff可以查看修改内容。 版本回退 HEAD指向的版本就是当前版本，因此，Git允许我们在版本的历史之间穿梭，使用命令git reset --hard commit_id。 穿梭前，用git log可以查看提交历史，以便确定要回退到哪个版本。 要重返未来，用git reflog查看命令历史，以便确定要回到未来的哪个版本。 原文请戳廖雪峰老师的文章 在提交代码到 git 仓库时候，需要时刻监控状态变化： 我的操作如下： 1、git status 主要检查那些文件作了修改 2、git add -A提交本地文件到本地仓库 3、git status检查提交状态 4、git commit -m &quot;说明最好见名之意&quot; 5、git pull origin master先拉一下其他人的代码 6、git push origin master提交代码到远程仓库]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[一些图片收集]]></title>
       <url>%2F2017%2F01%2F02%2F%E4%B8%80%E4%BA%9B%E5%9B%BE%E7%89%87%E6%94%B6%E9%9B%86%2F</url>
       <content type="text"><![CDATA[]]></content>
@@ -33,7 +40,7 @@
     <entry>
       <title><![CDATA[Objective-C概述（二）]]></title>
       <url>%2F2016%2F12%2F27%2FObjective-C%E6%A6%82%E8%BF%B0%EF%BC%88%E4%BA%8C%EF%BC%89%2F</url>
-      <content type="text"><![CDATA[浅析 objc_msgSend的作用​ 在对象上调用方法是 Objective-C 中经常使用的功能。用 Objective-C 的术语说，这叫做”传递消息（亦或消息传递）”。消息有”名称”（name）或”选择子”（selector），可以接受参数，而且可能有返回值。 补充中…..]]></content>
+      <content type="text"><![CDATA[先看一个坐标图： 浅析 objc_msgSend的作用​ 在对象上调用方法是 Objective-C 中经常使用的功能。用 Objective-C 的术语说，这叫做”传递消息（亦或消息传递）”。消息有”名称”（name）或”选择子”（selector），可以接受参数，而且可能有返回值。 补充中…..]]></content>
     </entry>
 
     
