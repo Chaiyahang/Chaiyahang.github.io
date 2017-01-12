@@ -40,7 +40,7 @@
     <entry>
       <title><![CDATA[Objective-C概述（二）]]></title>
       <url>%2F2016%2F12%2F27%2FObjective-C%E6%A6%82%E8%BF%B0%EF%BC%88%E4%BA%8C%EF%BC%89%2F</url>
-      <content type="text"><![CDATA[先看一个坐标图： 浅析 objc_msgSend的作用​ 在对象上调用方法是 Objective-C 中经常使用的功能。用 Objective-C 的术语说，这叫做”传递消息（亦或消息传递）”。消息有”名称”（name）或”选择子”（selector），可以接受参数，而且可能有返回值。 补充中…..]]></content>
+      <content type="text"><![CDATA[先看一个坐标图： 浅析 objc_msgSend的作用​ 在对象上调用方法是 Objective-C 中经常使用的功能。用 Objective-C 的术语说，这叫做”传递消息（亦或消息传递）”。消息有”名称”（name）或”选择子”（selector），可以接受参数，而且可能有返回值。 isMemberOfClass:用于判断对象是否为某个特定对象类的实例； isKindOfClass：用于判断对象是否为某类或者其派生类的实例。 Tips：Objective-C中，在比较两个对象是否相等时，经常使用 isEqual：方法。但是在 比较类对象是否相等时不能使用该方法，原因在于：类对象是单利（singleton），在应用程序范围内，每个类的 Class 仅有一个实例，也就是说，另外一种可以精确判断出对象是否为某类实例的办法是： 12345id object = /* …. */;if ([object class] == [SomeClass class])&#123; //&apos;object&apos; is an instance of SomeClass&#125;]]></content>
     </entry>
 
     

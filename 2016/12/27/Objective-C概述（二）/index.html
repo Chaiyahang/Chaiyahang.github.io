@@ -109,7 +109,7 @@
 <meta property="og:site_name" content="iOS Developer">
 <meta property="og:description" content="学而不思则罔,思而不学则殆">
 <meta property="og:image" content="https://ww4.sinaimg.cn/large/006tNc79jw1fb7yh6bdppj31kw1cuwhm.jpg">
-<meta property="og:updated_time" content="2017-01-07T08:09:52.000Z">
+<meta property="og:updated_time" content="2017-01-12T11:27:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Objective-C概述（二）">
 <meta name="twitter:description" content="学而不思则罔,思而不学则殆">
@@ -191,7 +191,7 @@
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
+      <div class="header-inner"><div class="site-meta custom-logo">
   
 
   <div class="custom-logo-site-title">
@@ -341,7 +341,7 @@
   <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="iOS Developer">
     <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="iOS Developer" src="">
+      <img style="display:none;" itemprop="url image" alt="iOS Developer" src="http://www.tanhao.me/favicon.ico?v=5.1.0">
     </span>
   </span>
 
@@ -444,7 +444,10 @@
         <p>先看一个坐标图：</p>
 <p><img src="https://ww4.sinaimg.cn/large/006tNc79jw1fb7yh6bdppj31kw1cuwhm.jpg" alt=""></p>
 <h4 id="浅析-objc-msgSend的作用"><a href="#浅析-objc-msgSend的作用" class="headerlink" title="浅析 objc_msgSend的作用"></a>浅析 objc_msgSend的作用</h4><p>​        在对象上调用方法是 Objective-C 中经常使用的功能。用 Objective-C 的术语说，这叫做”传递消息（亦或消息传递）”。消息有”名称”（name）或”选择子”（selector），可以接受参数，而且可能有返回值。</p>
-<p>补充中…..</p>
+<p><code>isMemberOfClass:</code>用于判断对象是否为某个特定对象类的实例；</p>
+<p><code>isKindOfClass：</code>用于判断对象是否为某类或者其派生类的实例。</p>
+<p>Tips：Objective-C中，在比较两个对象是否相等时，经常使用 <code>isEqual：</code>方法。但是在 比较类对象是否相等时不能使用该方法，原因在于：类对象是单利（singleton），在应用程序范围内，每个类的 Class 仅有一个实例，也就是说，另外一种可以精确判断出对象是否为某类实例的办法是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">id object = /* ….  */;</div><div class="line"></div><div class="line">if ([object class] == [SomeClass class])&#123;</div><div class="line">  //&apos;object&apos; is an instance of SomeClass</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -774,6 +777,10 @@
               
                 <li class="links-of-blogroll-item">
                   <a href="http://gracelancy.com/" title="Lancy's Blog" target="_blank">Lancy's Blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.tanhao.me/" title="老谭笔记" target="_blank">老谭笔记</a>
                 </li>
               
             </ul>
