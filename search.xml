@@ -5,7 +5,7 @@
     <entry>
       <title><![CDATA[Hexo博客添加图片、音乐、视频]]></title>
       <url>%2F2017%2F01%2F13%2FHexo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E5%9B%BE%E7%89%87%E3%80%81%E9%9F%B3%E4%B9%90%E3%80%81%E8%A7%86%E9%A2%91%2F</url>
-      <content type="text"><![CDATA[Hexo博客添加图片、音乐、视频 ———— “临渊羡鱼，不如退而结网” 一、添加图片既可以是本地图片 ，也可以是添加外部链接图片 1、本地图片在\hexo\source目录下新建文件夹，命名为images或者其他你喜欢的名字，然后编辑你的md博文，插入下面的代码样式： 2、外链图片 可以使用 iPic 上传图片 二、添加音乐12345&lt;center&gt;&lt;iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="http://music.163.com/outchain/player?type=2&amp;id=25706282&amp;auto=0&amp;height=66"&gt;&lt;/iframe&gt; &lt;/center&gt; 三、添加视频视频也和音乐类似，先输入视频标题，回车换一行插入代码即可。 1234"此处编辑视频标题:"&lt;center&gt; &lt;iframe height=498 width=510 src="http://player.youku.com/embed/XMTU3NTgxNjkzMg==" frameborder=0 allowfullscreen&gt;&lt;/iframe&gt;&lt;/center&gt;]]></content>
+      <content type="text"><![CDATA[Hexo博客添加图片、音乐、视频 ———— “临渊羡鱼，不如退而结网” 一、添加图片既可以是本地图片 ，也可以是添加外部链接图片 1、本地图片在\hexo\source目录下新建文件夹，命名为images或者其他你喜欢的名字，然后编辑你的md博文，插入下面的代码样式： 2、外链图片可以使用 iPic 上传图片 二、添加音乐12345&lt;center&gt;&lt;iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="http://music.163.com/outchain/player?type=2&amp;id=25706282&amp;auto=0&amp;height=66"&gt;&lt;/iframe&gt; &lt;/center&gt; 三、添加视频视频也和音乐类似，先输入视频标题，回车换一行插入代码即可。 1234"2017小米年会雷军跳鬼步舞视频:"&lt;center&gt; &lt;iframe height=498 width=510 src="http://t.cn/z8AluUz http://t.cn/RMSFvPU" frameborder=0 allowfullscreen&gt;&lt;/iframe&gt;&lt;/center&gt; 1234"2017小米年会爆笑神曲“咋了开发”:"&lt;center&gt; &lt;iframe height=498 width=510 src="http://www.toutiao.com/i6374714213071323650/" frameborder=0 allowfullscreen&gt;&lt;/iframe&gt;&lt;/center&gt;]]></content>
     </entry>
 
     
