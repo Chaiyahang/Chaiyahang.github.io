@@ -109,7 +109,7 @@
 <meta property="og:site_name" content="iOS Developer">
 <meta property="og:description" content="相信每一个开发者在初学 iOS 的时候，都有过被 Code Signing 坑过的经历，特别是当旁边没有人指导的时候，这也是当时我个人学习 iOS 的时候最困扰的地方，证书，provisioning profile, code signing 等等这些和实际的开发无关的概念，现在还记得苦苦看文档的经历。">
 <meta property="og:image" content="https://ww3.sinaimg.cn/large/006tNc79ly1fdmg5exqx0j30n40kw0sw.jpg">
-<meta property="og:updated_time" content="2017-03-14T08:32:31.000Z">
+<meta property="og:updated_time" content="2017-03-14T08:36:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ios代码签名探析">
 <meta name="twitter:description" content="相信每一个开发者在初学 iOS 的时候，都有过被 Code Signing 坑过的经历，特别是当旁边没有人指导的时候，这也是当时我个人学习 iOS 的时候最困扰的地方，证书，provisioning profile, code signing 等等这些和实际的开发无关的概念，现在还记得苦苦看文档的经历。">
@@ -446,6 +446,8 @@
 <p>Xcode 团队在 Xcode 8 中移除了 fix issue 之后还需要 fix issue 但是可能还是不能 fix issue 的 <code>Fix Issue</code> 按钮，并完全重新设计了 code signing 的交互，流程和架构，不管对于 iOS 初学者还是有经验的程序员，都能大大简化 code signing 的流程，让我们把精力更专注于实际的业务开发上。</p>
 <p>Xcode 8 支持两种签名方式，自动化签名 (<code>Automatic Singing</code>)和自定义签名(<code>Customized Signing</code>) 的。</p>
 <p>关于代码签名和签名探析请戳原文：(关于代码签名的分析)[<a href="http://joeyio.com" target="_blank" rel="external">http://joeyio.com</a>] 和 (代码签名的深度探析)[<a href="https://objccn.io/issue-17-2/" target="_blank" rel="external">https://objccn.io/issue-17-2/</a>]</p>
+<p>用 <code>security</code> 来看看一个 <code>.mobileprovision</code> 文件内部是什么样子：</p>
+<p><code>$ security cms -D -i example.mobileprovision</code></p>
 <p>当你真正理解了代码签名的过程，你会感谢他</p>
 <blockquote>
 <p>“用户会感激代码签名带来的好处” – Apple Developer Library: <a href="https://developer.apple.com/library/mac/documentation/Security/Conceptual/CodeSigningGuide/Introduction/Introduction.html" target="_blank" rel="external">Code Signing Guide</a></p>
