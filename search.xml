@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[ios代码签名探析]]></title>
+      <url>%2F2017%2F03%2F14%2Fios%E4%BB%A3%E7%A0%81%E7%AD%BE%E5%90%8D%E6%8E%A2%E6%9E%90%2F</url>
+      <content type="text"><![CDATA[iOS 证书申请和签名打包流程图 Xcode 团队在 Xcode 8 中移除了 fix issue 之后还需要 fix issue 但是可能还是不能 fix issue 的 Fix Issue 按钮，并完全重新设计了 code signing 的交互，流程和架构，不管对于 iOS 初学者还是有经验的程序员，都能大大简化 code signing 的流程，让我们把精力更专注于实际的业务开发上。 Xcode 8 支持两种签名方式，自动化签名 (Automatic Singing)和自定义签名(Customized Signing) 的。 关于代码签名和签名探析请戳原文：(关于代码签名的分析)[http://joeyio.com] 和 (代码签名的深度探析)[https://objccn.io/issue-17-2/] 当你真正理解了代码签名的过程，你会感谢他 “用户会感激代码签名带来的好处” – Apple Developer Library: Code Signing Guide 在签名的路上，发现了这一篇好文，剖析的非常透彻，简洁易懂。在此呈献给遇到同样问题的iOS Developer共勉]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[Best Free Apps For Mac]]></title>
       <url>%2F2017%2F02%2F23%2FBest-Free-Apps-For-Mac%2F</url>
       <content type="text"><![CDATA[​ 网络的世界犹如浩瀚的海洋一样，深不见底，亦摸不着边际，Best Free Apps For Mac ——Xclient 是屌丝逆袭的首选！ 网址如下： 需要什么请戳Best Free Apps For Mac]]></content>
