@@ -86,7 +86,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="iOS,Objective-C," />
+  <meta name="keywords" content="iOS," />
 
 
 
@@ -102,20 +102,16 @@
 
 
 
-<meta name="description" content="学而不思则罔,思而不学则殆">
+<meta name="description" content="OC对象的内存管理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Objective-C概述（二）">
-<meta property="og:url" content="http://yoursite.com/2016/12/27/Objective-C概述（二）/index.html">
+<meta property="og:title" content="OC内存管理">
+<meta property="og:url" content="http://yoursite.com/2017/03/20/OC内存管理/index.html">
 <meta property="og:site_name" content="iOS Developer">
-<meta property="og:description" content="学而不思则罔,思而不学则殆">
-<meta property="og:image" content="https://ww4.sinaimg.cn/large/006tNc79jw1fb7yh6bdppj31kw1cuwhm.jpg">
-<meta property="og:image" content="https://ww4.sinaimg.cn/large/006tNbRwly1fcr9gqw04jj30u01hc44x.jpg">
-<meta property="og:image" content="https://ww4.sinaimg.cn/large/006tNbRwly1fcs60sgcz0j30u01hctdy.jpg">
-<meta property="og:updated_time" content="2017-02-17T10:00:02.000Z">
+<meta property="og:description" content="OC对象的内存管理">
+<meta property="og:updated_time" content="2017-03-21T05:49:19.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Objective-C概述（二）">
-<meta name="twitter:description" content="学而不思则罔,思而不学则殆">
-<meta name="twitter:image" content="https://ww4.sinaimg.cn/large/006tNc79jw1fb7yh6bdppj31kw1cuwhm.jpg">
+<meta name="twitter:title" content="OC内存管理">
+<meta name="twitter:description" content="OC对象的内存管理">
 
 
 
@@ -143,13 +139,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/12/27/Objective-C概述（二）/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/03/20/OC内存管理/"/>
 
 
 
 
 
-  <title> Objective-C概述（二） | iOS Developer </title>
+  <title> OC内存管理 | iOS Developer </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -332,7 +328,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/27/Objective-C概述（二）/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/20/OC内存管理/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="柴亚航">
@@ -356,7 +352,7 @@
             
             
               
-                Objective-C概述（二）
+                OC内存管理
               
             
           </h1>
@@ -369,8 +365,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-27T18:11:34+08:00">
-                2016-12-27
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-20T17:47:39+08:00">
+                2017-03-20
               </time>
             
 
@@ -403,8 +399,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/12/27/Objective-C概述（二）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/27/Objective-C概述（二）/" itemprop="commentCount"></span>
+                <a href="/2017/03/20/OC内存管理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/20/OC内存管理/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -414,7 +410,7 @@
 
           
           
-             <span id="/2016/12/27/Objective-C概述（二）/" class="leancloud_visitors" data-flag-title="Objective-C概述（二）">
+             <span id="/2017/03/20/OC内存管理/" class="leancloud_visitors" data-flag-title="OC内存管理">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -428,7 +424,7 @@
 
           
               <div class="post-description">
-                  学而不思则罔,思而不学则殆
+                  OC对象的内存管理
               </div>
           
 
@@ -443,44 +439,118 @@
       
 
       
-        <p>先看一个坐标图：</p>
-<p><img src="https://ww4.sinaimg.cn/large/006tNc79jw1fb7yh6bdppj31kw1cuwhm.jpg" alt=""></p>
-<h4 id="浅析-objc-msgSend的作用"><a href="#浅析-objc-msgSend的作用" class="headerlink" title="浅析 objc_msgSend的作用"></a>浅析 objc_msgSend的作用</h4><p>​        在对象上调用方法是 Objective-C 中经常使用的功能。用 Objective-C 的术语说，这叫做”传递消息（亦或消息传递）”。消息有”名称”（name）或”选择子”（selector），可以接受参数，而且可能有返回值。</p>
-<p><code>isMemberOfClass:</code>用于判断对象是否为某个特定对象类的实例；</p>
-<p><code>isKindOfClass：</code>用于判断对象是否为某类或者其派生类的实例。</p>
-<p>Tips：Objective-C中，在比较两个对象是否相等时，经常使用 <code>isEqual：</code>方法。但是在 比较类对象是否相等时不能使用该方法，原因在于：类对象是单利（singleton），在应用程序范围内，每个类的 Class 仅有一个实例，也就是说，另外一种可以精确判断出对象是否为某类实例的办法是：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">id object = /* ….  */;</div><div class="line"></div><div class="line">if ([object class] == [SomeClass class])&#123;</div><div class="line">  //&apos;object&apos; is an instance of SomeClass</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="bitfield-位段、位域"><a href="#bitfield-位段、位域" class="headerlink" title="bitfield-位段、位域"></a>bitfield-位段、位域</h3><p>将方法响应能力缓存起来的最佳途径是使用”位段”(bitfield) 数据类型。（这是一项乏人问津的 C语言特性，在此处使用非常合适）我们可以把结构体中某个字段所占的二进制位个数设定为特定的值。比如：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> data&#123;</div><div class="line">	<span class="keyword">unsigned</span> <span class="keyword">int</span> fieldA : <span class="number">8</span>;</div><div class="line">  	<span class="keyword">unsigned</span> <span class="keyword">int</span> fieldB : <span class="number">4</span>;</div><div class="line">  	<span class="keyword">unsigned</span> <span class="keyword">int</span> fieldC : <span class="number">2</span>;</div><div class="line">  	<span class="keyword">unsigned</span> <span class="keyword">int</span> fieldD : <span class="number">1</span>;</div><div class="line">&#125;;</div><div class="line">在结构体中，fieldA位段占用<span class="number">8</span>个二进制位，fieldB位段占用<span class="number">4</span>个二进制位，fieldC位段占用<span class="number">2</span>个二进制位，fieldD位段占用<span class="number">1</span>个二进制位。于是，fieldA可以表示<span class="number">0</span>至<span class="number">255</span>之间的值，而fieldD则可以表示<span class="number">0</span>或<span class="number">1</span>这两个值。我们可以像fieldD这样把委托对象是否实现了协议中的方法这一信息缓存起来。如果创建的结构体中只有大小为<span class="number">1</span>的位段，那么就可以把许多值塞进这一小块数据里面了。</div></pre></td></tr></table></figure>
-<p>  比如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">@interface SCNetworkFetcher()&#123;</div><div class="line">   struct &#123;</div><div class="line">     	  unsigned int didReceivedData 			   : 1;</div><div class="line">          unsigned int didReceivedWithError 	    : 1;</div><div class="line">          unsigned int didReceivedUpdateProgress    : 1;</div><div class="line">	&#125; _delegateFlags;</div><div class="line">&#125;</div><div class="line">@end</div><div class="line">  </div><div class="line">//setFlags 和 setDelegate</div><div class="line">- (void)setDelegate:(id&lt;SCNetworkFetcher&gt;)delegate&#123;</div><div class="line">	_delegate = delegate;</div><div class="line">    _delegateFlags.didReceivedData = [delegate respondsToSelector:@selector(networkFetcher:didReceivedData:)];</div><div class="line">	/*  .......  */</div><div class="line">&#125;</div><div class="line"></div><div class="line">//使用：</div><div class="line"> if(_delegateFlags.didReceivedData)&#123;</div><div class="line">   [_delegate networkFetcher:self didReceivedData:data];</div><div class="line">&#125;</div><div class="line"></div><div class="line">//总结：是否需要进行优化，则应按照具体的代码逻辑而定。首先需要分析代码性能，并找出瓶颈，若发现执行速度需要改进，则可使用此技巧。</div></pre></td></tr></table></figure>
-<p>不能使用retainCount的原因在于：它所返回的保留计数只是某个给定的时间点儿上的值。该方法并未考虑到系统会稍后把自动释放池清空，因而不会将后续的释放操作从返回值里减去，这样看来，此值就未必能真实的反映实际的保留计数了。这也就是为什么说这个方法无用的主要原因。</p>
-<p>ARC在编译期和运行期的分别做了些什么？看下图：</p>
-<p><img src="https://ww4.sinaimg.cn/large/006tNbRwly1fcr9gqw04jj30u01hc44x.jpg" alt=""></p>
-<h3 id="Grand-Central-Dispatch-——————GCD-块与大中枢派发"><a href="#Grand-Central-Dispatch-——————GCD-块与大中枢派发" class="headerlink" title="Grand Central Dispatch ——————GCD 块与大中枢派发"></a>Grand Central Dispatch ——————GCD 块与大中枢派发</h3><h5 id="1、块类型的语法结构如下："><a href="#1、块类型的语法结构如下：" class="headerlink" title="1、块类型的语法结构如下："></a>1、块类型的语法结构如下：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">return_type (^block_name) (parameters)</div></pre></td></tr></table></figure>
-<p> 默认情况下，为块所捕获的外界变量，是不可以修改的，但是声明变量的时候使用__block 修饰符，是可以修改的。</p>
+        <h2 id="Objective-C-中的内存分配"><a href="#Objective-C-中的内存分配" class="headerlink" title="Objective-C 中的内存分配"></a>Objective-C 中的内存分配</h2><p>在 Objective-C 中，对象通常是使用 <code>alloc</code> 方法在堆上创建的。 <code>[NSObject alloc]</code> 方法会在对堆上分配一块内存，按照<code>NSObject</code>的内部结构填充这块儿内存区域。</p>
+<p>一旦对象创建完成，就不可能再移动它了。因为很可能有很多指针都指向这个对象，这些指针并没有被追踪。因此没有办法在移动对象的位置之后更新全部的这些指针。</p>
+<h2 id="MRC-与-ARC"><a href="#MRC-与-ARC" class="headerlink" title="MRC 与 ARC"></a>MRC 与 ARC</h2><p>Objective-C中提供了两种内存管理机制：MRC（MannulReference Counting）和 ARC(Automatic Reference Counting)，分别提供对内存的手动和自动管理，来满足不同的需求。现在苹果推荐使用 ARC 来进行内存管理。</p>
+<h3 id="MRC"><a href="#MRC" class="headerlink" title="MRC"></a>MRC</h3><h4 id="对象操作的四个类别"><a href="#对象操作的四个类别" class="headerlink" title="对象操作的四个类别"></a>对象操作的四个类别</h4><table>
+<thead>
+<tr>
+<th>对象操作</th>
+<th>OC中对应的方法</th>
+<th>对应的 retainCount 变化</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>生成并持有对象</td>
+<td>alloc/new/copy/mutableCopy等</td>
+<td>+1</td>
+</tr>
+<tr>
+<td>持有对象</td>
+<td>retain</td>
+<td>+1</td>
+</tr>
+<tr>
+<td>释放对象</td>
+<td>release</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>废弃对象</td>
+<td>dealloc</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p><strong>注意：</strong></p>
+<ul>
+<li><del>这些对象操作的方法其实并不包括在OC中，而是包含在Cocoa框架下的Foundation框架中。</del><a href="https://developer.apple.com/library/content/releasenotes/General/iOS70APIDiffs/index.html" target="_blank" rel="external">从 iOS 7 开始</a>，这些方法被移动到了 Runtime 当中，可以在 <a href="http://opensource.apple.com/source/objc4/objc4-680/runtime/NSObject.h" target="_blank" rel="external">objc4-680 NSObject.h</a> 找到。</li>
+<li>对象的 <code>reatinCount</code> 属性并没有实际上的参考价值，参考苹果官方文档<a href="https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/MemoryMgmt/Articles/mmPractical.html" target="_blank" rel="external">《Practical Memory Management》</a>.</li>
+</ul>
+<h4 id="四个法则"><a href="#四个法则" class="headerlink" title="四个法则"></a>四个法则</h4><ul>
+<li>自己生成的对象，自己持有。</li>
+<li>非自己生成的对象，自己也能持有。</li>
+<li>不在需要自己持有对象的时候，释放。</li>
+<li>非自己持有的对象无需释放。</li>
+</ul>
+<p>如下是四个黄金法则对应的代码示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line"> * 自己生成并持有该对象</div><div class="line"> */</div><div class="line"> id obj0 = [[NSObeject alloc] init];</div><div class="line"> id obj1 = [NSObeject new];</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line"> * 持有非自己生成的对象</div><div class="line"> */</div><div class="line">id obj = [NSArray array]; // 非自己生成的对象，且该对象存在，但自己不持有</div><div class="line">[obj retain]; // 自己持有对象</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line"> * 不在需要自己持有的对象的时候，释放</div><div class="line"> */</div><div class="line">id obj = [[NSObeject alloc] init]; // 此时持有对象</div><div class="line">[obj release]; // 释放对象</div><div class="line">/*</div><div class="line"> * 指向对象的指针仍就被保留在obj这个变量中</div><div class="line"> * 但对象已经释放，不可访问</div><div class="line"> */</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line"> * 非自己持有的对象无法释放</div><div class="line"> */</div><div class="line">id obj = [NSArray array]; // 非自己生成的对象，且该对象存在，但自己不持有</div><div class="line">[obj release]; // ~~~此时将运行时crash 或编译器报error~~~ 非 ARC 下，调用该方法会导致编译器报 issues。此操作的行为是未定义的，可能会导致运行时 crash 或者其它未知行为</div></pre></td></tr></table></figure>
+<p>其中 <code>非自己生成的对象，且该对象存在，但自己不持有</code> 这个特性是使用<code>autorelease</code>来实现的，示例代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">- (id) getAObjNotRetain &#123;</div><div class="line">    id obj = [[NSObject alloc] init]; // 自己持有对象</div><div class="line">    [obj autorelease]; // 取得的对象存在，但自己不持有该对象</div><div class="line">    return obj;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>autorelease</code> 使得对象在超出生命周期后能正确的被释放(通过调用release方法)。在调用 <code>release</code> 后，对象会被立即释放，而调用 <code>autorelease</code> 后，对象不会被立即释放，而是注册到 <code>autoreleasepool</code> 中，经过一段时间后 <code>pool</code>结束，此时调用release方法，对象被释放。</p>
+<p>在MRC的内存管理模式下，与对变量的管理相关的方法有：retain, release 和 autorelease。retain 和 release 方法操作的是引用记数，当引用记数为零时，便自动释放内存。并且可以用 NSAutoreleasePool 对象，对加入自动释放池（autorelease 调用）的变量进行管理，当 drain 时回收内存。</p>
+<h3 id="ARC"><a href="#ARC" class="headerlink" title="ARC"></a>ARC</h3><p>ARC 是苹果引入的一种自动内存管理机制，会根据引用计数自动监视对象的生存周期，实现方式是在编译时期自动在已有代码中插入合适的内存管理代码以及在 Runtime 做一些优化。</p>
+<h4 id="变量标识符"><a href="#变量标识符" class="headerlink" title="变量标识符"></a>变量标识符</h4><p>在ARC中与内存管理有关的变量标识符，有下面几种：</p>
+<ul>
+<li><code>__strong</code></li>
+<li><code>__weak</code></li>
+<li><code>__unsafe_unretained</code></li>
+<li><code>__autoreleasing</code></li>
+</ul>
+<p><code>__strong</code> 是默认使用的标识符。只要还有一个强指针指向某个对象，这个对象就会一直存活。</p>
+<p><code>__weak</code> 声明这个引用不会保持被引用对象的存活，如果对象没有强引用了，弱引用会被置为 nil</p>
+<p><code>__unsafe_unretained</code> 声明这个引用不会保持被引用对象的存活，如果对象没有强引用了，它不会被置为 nil。如果它引用的对象被回收掉了，该指针就变成了野指针。</p>
+<p><code>__autoreleasing</code> 用于标示使用引用传值的参数（id *），在函数返回时会被自动释放掉。</p>
+<p>变量标识符的用法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Number* __strong num = [[Number alloc] init];</div></pre></td></tr></table></figure>
+<p>注意 <code>__strong</code> 的位置应该放到 <code>*</code> 和变量名中间，放到其他的位置严格意义上说是不正确的，只不过编译器不会报错。</p>
+<h4 id="属性标识符"><a href="#属性标识符" class="headerlink" title="属性标识符"></a>属性标识符</h4><p>类中的属性也可以加上标志符：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@property (assign/retain/strong/weak/unsafe_unretained/copy) Number* num</div></pre></td></tr></table></figure>
+<p><code>assign</code>表明 setter 仅仅是一个简单的赋值操作，通常用于基本的数值类型，例如<code>CGFloat</code>和<code>NSInteger</code>。</p>
+<p><code>strong</code> 表明属性定义一个拥有者关系。当给属性设定一个新值的时候，首先这个值进行 <code>retain</code> ，旧值进行 <code>release</code> ，然后进行赋值操作。</p>
+<p><code>weak</code> 表明属性定义了一个非拥有者关系。当给属性设定一个新值的时候，这个值不会进行 <code>retain</code>，旧值也不会进行 <code>release</code>， 而是进行类似 <code>assign</code> 的操作。不过当属性指向的对象被销毁时，该属性会被置为nil。</p>
+<p><code>unsafe_unretained</code> 的语义和 <code>assign</code> 类似，不过是用于对象类型的，表示一个非拥有(unretained)的，同时也不会在对象被销毁时置为nil的(unsafe)关系。</p>
+<p><code>copy</code> 类似于 <code>strong</code>，不过在赋值时进行 <code>copy</code> 操作而不是 <code>retain</code> 操作。通常在需要保留某个不可变对象（NSString最常见），并且防止它被意外改变时使用。</p>
+<h5 id="错误使用属性标识符的后果"><a href="#错误使用属性标识符的后果" class="headerlink" title="错误使用属性标识符的后果"></a>错误使用属性标识符的后果</h5><p>如果我们给一个原始类型设置 <code>strong\weak\copy</code> ，编译器会直接报错：</p>
 <blockquote>
-<p>如果通过读取或者写入操作捕获了实例变量，那么也会自动把 self 变量一并捕获了，因为实例变量与 self 所指代的实例关联在一起的。所以，要特别注意，在块内儿，访问实例变量，为避免循环引用，需在块外对 self 进行弱引用修饰 </p>
+<p>Property with ‘retain (or strong)’ attribute must be of object type</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">__weak typeof(self) weakSelf = self;</div></pre></td></tr></table></figure>
-<p>块的内部结构</p>
-<p><img src="https://ww4.sinaimg.cn/large/006tNbRwly1fcs60sgcz0j30u01hctdy.jpg" alt=""></p>
-<h1 id="iOS-NSLinguisticTagger（自然语言）"><a href="#iOS-NSLinguisticTagger（自然语言）" class="headerlink" title="iOS - NSLinguisticTagger（自然语言）"></a>iOS - NSLinguisticTagger（自然语言）</h1><blockquote>
-<p>自然语言筛选代码及注释:</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">//1.创建语句</div><div class="line"> NSString * question = @&quot;What is the weather in San Francisco?&quot;;</div><div class="line"> //2.创建筛选条件</div><div class="line"> NSLinguisticTaggerOptions options = NSLinguisticTaggerOmitWhitespace | NSLinguisticTaggerJoinNames |NSLinguisticTaggerOmitPunctuation;</div><div class="line"> //3.创建自然语言标签</div><div class="line"> NSLinguisticTagger * tagger = [[NSLinguisticTagger alloc]initWithTagSchemes:[NSLinguisticTagger availableTagSchemesForLanguage:@&quot;en&quot;] options:options];</div><div class="line"> //4.给标签附字符串</div><div class="line"> tagger.string = question;</div><div class="line"> //5.执行筛选</div><div class="line"> [tagger enumerateTagsInRange:NSMakeRange(0, question.length) scheme:NSLinguisticTagSchemeNameTypeOrLexicalClass  options:options usingBlock:^(NSString * _Nonnull tag, NSRange tokenRange, NSRange sentenceRange, BOOL * _Nonnull stop) &#123;</div><div class="line"></div><div class="line">     //6.获取结果</div><div class="line">     NSString*token = [question substringWithRange:tokenRange];</div><div class="line"></div><div class="line">     //7.打印结果</div><div class="line">     NSLog(@&quot;%@:%@&quot;,token,tag);</div><div class="line"> &#125;];</div></pre></td></tr></table></figure>
+<p>设置为 <code>unsafe_unretained</code> 倒是可以通过编译，只是用起来跟 <code>assign</code> 也没有什么区别。</p>
+<p>反过来，我们给一个 NSObject 属性设置为 assign，编译器会报警：</p>
 <blockquote>
-<p>打印结果</p>
+<p>Assigning retained object to unsafe property; object will be released after assignment</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">2017-02-17 15:17:06.478 Demo[54116:2511652] What:Pronoun</div><div class="line">2017-02-17 15:17:06.478 Demo[54116:2511652] is:Verb</div><div class="line">2017-02-17 15:17:06.479 Demo[54116:2511652] the:Determiner</div><div class="line">2017-02-17 15:17:06.480 Demo[54116:2511652] weather:Noun</div><div class="line">2017-02-17 15:17:06.480 Demo[54116:2511652] in:Preposition</div><div class="line">2017-02-17 15:17:06.482 Demo[54116:2511652] San Francisco:PlaceName</div><div class="line">(lldb)</div></pre></td></tr></table></figure>
-<p>OC 经历了多年的发展和进化，遍历collection 的方式也经历了一系列的演变，如下：</p>
-<p>1、For 循环遍历</p>
-<p>2、使用 Objective-C 1.0 的 NSEnumerator 来遍历</p>
-<p>3、快速遍历（For-in）</p>
-<p>4、基于”块”的遍历方式  （PS：若能提前得知遍历的 collection 是何种对象，则应该修改块签名，指出对象的具体类型）</p>
-<blockquote>
-<p>​       总体来看， 块枚举法拥有上述遍历方式的所有优势，而且还有更多好处。与快速遍历方法相比，它要多用一些代码，可是却能提供遍历时所针对的下标，在遍历字典时也能同时提供键与值，而且还有选修可以开启并发迭代功能，所以多写点儿代码还是值得的。</p>
-</blockquote>
+<p>正如警告所说的，对象在赋值之后被立即释放，对应的属性也就成了野指针，运行时跑到属性有关操作会直接崩溃掉。和设置成 <code>unsafe_unretained</code> 是一样的效果（设置成 <code>weak</code> 不会崩溃）。</p>
+<h5 id="unsafe-unretained-的用处"><a href="#unsafe-unretained-的用处" class="headerlink" title="unsafe_unretained 的用处"></a><code>unsafe_unretained</code> 的用处</h5><p><code>unsafe_unretained</code> 差不多是实际使用最少的一个标识符了，在使用中它的用处主要有下面几点：</p>
+<ol>
+<li>兼容性考虑。iOS4 以及之前还没有引入 <code>weak</code>，这种情况想表达弱引用的语义只能使用 <code>unsafe_unretained</code>。这种情况现在已经很少见了。</li>
+<li>性能考虑。使用 <code>weak</code> 对性能有一些影响，因此对性能要求高的地方可以考虑使用 <code>unsafe_unretained</code> 替换 <code>weak</code>。一个例子是 <a href="https://github.com/ibireme/YYModel/blob/master/YYModel/NSObject%2BYYModel.m" target="_blank" rel="external">YYModel 的实现</a>，为了追求更高的性能，其中大量使用 <code>unsafe_unretained</code> 作为变量标识符。</li>
+</ol>
+<h4 id="main-m-中-Autorelease-Pool-的解释"><a href="#main-m-中-Autorelease-Pool-的解释" class="headerlink" title="main.m 中 Autorelease Pool 的解释"></a>main.m 中 Autorelease Pool 的解释</h4><p>大家都知道在 iOS 程序的 main.m 文件中有类似这样的语句：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">int main(int argc, char * argv[]) &#123;</div><div class="line">    @autoreleasepool &#123;</div><div class="line">        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然而，这里的 pool 有什么作用，能不能去掉呢？在这里我们分析一下：</p>
+<p>根据<a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIKitFunctionReference/index.html#//apple_ref/c/func/UIApplicationMain" target="_blank" rel="external">苹果官方文档</a>， UIApplicationMain 函数是整个 app 的入口，用来创建 application 对象（单例）和 application delegate。尽管这个函数有返回值，但是实际上却永远不会返回，当按下 Home 键时，app 只是被切换到了后台状态。</p>
+<p>同时参考苹果关于 Lifecycle 的<a href="https://developer.apple.com/library/ios/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/TheAppLifeCycle/TheAppLifeCycle.html" target="_blank" rel="external">官方文档</a>，UIApplication 自己会创建一个 main run loop，我们大致可以得到下面的结论：</p>
+<ol>
+<li>main.m 中的 UIApplicationMain 永远不会返回，只有在系统 kill 掉整个 app 时，系统会把应用占用的内存全部释放出来。</li>
+<li>因为(1)， UIApplicationMain 永远不会返回，这里的 autorelease pool 也就永远不会进入到释放那个阶段</li>
+<li>在 (2) 的基础上，假设有些变量真的进入了 main.m 里面这个 pool（没有被更内层的 pool 捕获），那么这些变量实际上就是被泄露的。这个 autorelease pool 等于是把这种泄露情况给隐藏起来了。</li>
+<li>UIApplication 自己会创建 main run loop，在 Cocoa 的 runloop 中实际上也是自动包含 autorelease pool 的，因此 main.m 当中的 pool 可以认为是<strong>没有</strong>必要的。</li>
+</ol>
+<p>在基于 AppKit 框架的 Mac OS 开发中， main.m 当中就是不存在 autorelease pool 的，也进一步验证了我们得到的结论。不过因为我们看不到更底层的代码，加上苹果的文档中不建议修改 main.m ，所以我们也没有理由就直接把它删掉（亲测，删掉之后不影响 App 运行，用 Instruments 也看不到泄露）。</p>
+<p>为了进一步理解 ARC 是如何做到这一点的，我们可以参考 Clang 的<a href="http://clang.llvm.org/docs/AutomaticReferenceCounting.html#unretained-return-values" target="_blank" rel="external">文档</a>。</p>
+<p>众所周知，weak 不会持有对象，当给一个 weak 赋以一个自己生成的对象（即 retained return value）后，对象会立马被释放。</p>
+<p>一个很常见的 warning 就是 Assigning retained object to weak variable, object will be released after assignment.</p>
+<p>但是我们前面也提到了，可以持有非自己生成的对象，这通过 autorelease 实现。</p>
+<p>那么如果一个 weak 被赋以一个非自己生成的对象（即 unretained return value）呢？代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">NSNumber __weak *number = [NSNumber numberWithInt:100];</div><div class="line">NSLog(@&quot;number = %@&quot;, number);</div></pre></td></tr></table></figure>
+<p>这种情况下是可以正确打印值的。</p>
+<p><a href="http://clang.llvm.org/docs/AutomaticReferenceCounting.html#arc-runtime-objc-loadweak" target="_blank" rel="external">clang的文档</a> 是这么说的：这种情况下，weak 并不会立即释放，而是会通过 <code>objc_loadWeak</code> 这个方法注册到 AutoreleasePool 中，以延长生命周期。</p>
+<p>ARC 下的临时变量是受到 Autorelease Pool 的管理的，会自动释放。</p>
 
       
     </div>
@@ -527,8 +597,6 @@
           
             <a href="/tags/iOS/" rel="tag"># iOS</a>
           
-            <a href="/tags/Objective-C/" rel="tag"># Objective-C</a>
-          
         </div>
       
 
@@ -536,8 +604,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/24/Markdown开启编辑新模式/" rel="next" title="Markdown开启编辑新模式">
-                <i class="fa fa-chevron-left"></i> Markdown开启编辑新模式
+              <a href="/2017/03/19/3·15晚会/" rel="next" title="3·15晚会">
+                <i class="fa fa-chevron-left"></i> 3·15晚会
               </a>
             
           </div>
@@ -546,8 +614,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/01/02/覃彪喜收藏/" rel="prev" title="覃彪喜收藏">
-                覃彪喜收藏 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/03/21/ios应用程序的生命周期/" rel="prev" title=" ios应用程序的生命周期">
+                 ios应用程序的生命周期 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -600,8 +668,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/12/27/Objective-C概述（二）/"
-           data-title="Objective-C概述（二）" data-url="http://yoursite.com/2016/12/27/Objective-C概述（二）/">
+      <div class="ds-thread" data-thread-key="2017/03/20/OC内存管理/"
+           data-title="OC内存管理" data-url="http://yoursite.com/2017/03/20/OC内存管理/">
       </div>
     
   </div>
@@ -843,7 +911,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#浅析-objc-msgSend的作用"><span class="nav-number">1.</span> <span class="nav-text">浅析 objc_msgSend的作用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bitfield-位段、位域"><span class="nav-number"></span> <span class="nav-text">bitfield-位段、位域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Grand-Central-Dispatch-——————GCD-块与大中枢派发"><span class="nav-number"></span> <span class="nav-text">Grand Central Dispatch ——————GCD 块与大中枢派发</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、块类型的语法结构如下："><span class="nav-number">0.1.</span> <span class="nav-text">1、块类型的语法结构如下：</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#iOS-NSLinguisticTagger（自然语言）"><span class="nav-number"></span> <span class="nav-text">iOS - NSLinguisticTagger（自然语言）</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Objective-C-中的内存分配"><span class="nav-number">1.</span> <span class="nav-text">Objective-C 中的内存分配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MRC-与-ARC"><span class="nav-number">2.</span> <span class="nav-text">MRC 与 ARC</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MRC"><span class="nav-number">2.1.</span> <span class="nav-text">MRC</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#对象操作的四个类别"><span class="nav-number">2.1.1.</span> <span class="nav-text">对象操作的四个类别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四个法则"><span class="nav-number">2.1.2.</span> <span class="nav-text">四个法则</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ARC"><span class="nav-number">2.2.</span> <span class="nav-text">ARC</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#变量标识符"><span class="nav-number">2.2.1.</span> <span class="nav-text">变量标识符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#属性标识符"><span class="nav-number">2.2.2.</span> <span class="nav-text">属性标识符</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#错误使用属性标识符的后果"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">错误使用属性标识符的后果</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#unsafe-unretained-的用处"><span class="nav-number">2.2.2.2.</span> <span class="nav-text">unsafe_unretained 的用处</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#main-m-中-Autorelease-Pool-的解释"><span class="nav-number">2.2.3.</span> <span class="nav-text">main.m 中 Autorelease Pool 的解释</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
