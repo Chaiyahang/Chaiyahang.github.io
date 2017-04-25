@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title></title>
+      <url>%2F2017%2F04%2F25%2F%E6%8E%A8%E9%80%81%E7%9A%84%E5%8E%9F%E7%90%86%2F</url>
+      <content type="text"><![CDATA[Push Notification是如何工作的？ 推送通知分为两种,一个是本地推送,一个是远程推送 本地推送：不需要联网也可以推送,是开发人员在App内设定特定的时间来提醒用户干什么 远程推送：需要联网,用户的设备会于苹果APNS服务器形成一个长连接,用户设备会发送UUID 和Bundle idenidentifier给苹果服务器,苹果服务器会加密生成一个deviceToken返回给用户设备,然后设备会将deviceToken发送给APP的服务器,服务器会将deviceToken存进他们的数据库,这时候如果有人发送消息给我,服务器端就会去查询我的deviceToken,然后将deviceToken和要发送的信息发送给苹果服务器,苹果服务器通过deviceToken找到我的设备并将消息推送到我的设备上,这里还有个情况是如果App在线,那么App服务器会于App产生一个长连接,这时候App服务器会直接通过deviceToken将消息 msg 推送到设备上。 http://www.jianshu.com/p/e347f999ed95]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[ios应用程序的生命周期]]></title>
       <url>%2F2017%2F03%2F21%2Fios%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%2F</url>
       <content type="text"><![CDATA[​ 每一个程序在运行期必须有且仅有一个 UIApplication（或则其子类）的一个实例。在程序开始运行的时候，UIApplicationMain 函数是程序进入点，这个函数做了很多工作，其中一个重要的工作就是创建一个 UIApplication 的单例实例。在你的代码中你，你可以通过调用 [UIApplication sharedApplication] 来得到这个单例实例的指针。 ​ UIApplication 的一个主要工作是处理用户事件，它会起一个队列，把所有用户事件都放入队列，逐个处理，在处理的时候，它会发送当前事件 到一个合适的处理事件的目标控件。此外，UIApplication 实例还维护一个在本应用中打开的 window 列表（UIWindow 实例），这样它就 可以接触应用中的任何一个 UIView 对象。UIApplication 实例会被赋予一个代理对象，以处理应用程序的生命周期事件（比如程序启动和关闭）、系统事件（比如来电、记事项警告）等等。 UIApplicaion 生命周期一个 UIApplication 可以有如下几种状态： Not running（未运行） Inactive（未激活） Active（激活） Background（后台） Suspended（挂起） 常见的代理方法有: -(void)applicationWillResignActive:(UIApplication *)application 说明：当应用程序将要入非活动状态执行，在此期间，应用程序不接收消息或事件，比如来电话了 -(void)applicationDidBecomeActive:(UIApplication *)application 说明：当应用程序入活动状态执行，这个刚好跟上面那个方法相反 -(void)applicationDidEnterBackground:(UIApplication *)application 说明：当程序被推送到后台的时候调用。所以要设置后台继续运行，则在这个函数里面设置即可 -(void)applicationWillEnterForeground:(UIApplication *)application 说明：当程序从后台将要重新回到前台时候调用，这个刚好跟上面的那个方法相反。 -(void)applicationWillTerminate:(UIApplication *)application 说明：当程序将要退出是被调用，通常是用来保存数据和一些退出前的清理工作。这个需要设置 UIApplicationExitsOnSuspend 的键值。 -(void)applicationDidReceiveMemoryWarning:(UIApplication *)application 说明：iPhone 设备只有有限的内存，如果为应用程序分配了太多内存操作系统会终止应用程序的运行，在终止前会执行这个方法，通常可以在这里进行内存清理工作防止程序被终止 -(void)applicationSignificantTimeChange:(UIApplication*)application 说明：当系统时间发生改变时执行 -(void)applicationDidFinishLaunching:(UIApplication*)application 说明：当程序载入后执行 下面是一个用于展示整个 App 生命周期的示意图： 这一张来自 Twitter 的图片，对于理解 iOS App 的生命周期起到了非常大的作用！]]></content>
