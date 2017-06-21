@@ -668,12 +668,20 @@
           
   <div class="comments" id="comments">
     
-      <section id="comments"  class="comment">
-      <div id="commentContainer"></div>
-      </section>
-
-      <!-- Gitment Start -->
-    
+      <script>
+      $(document).ready(function(){
+      var gitment = new Gitment({
+        owner: 'Chaiyahang',
+        repo: 'https://github.com/Chaiyahang/Chaiyahang.github.io',
+        oauth: {
+          client_id: 'b72549d516c9c460d6b6',
+          client_secret: 'aefd9a5390b81dde2c02e88cef33b72c549d5e77',
+        },
+      });
+      gitment.render('commentContainer') ;
+      });
+      </script>
+  
   </div>
 
 
