@@ -124,7 +124,7 @@
     fancybox: true,
     motion: true,
     duoshuo: {
-      userId: '0',
+      userId: 'undefined',
       author: '博主'
     },
     algolia: {
@@ -500,7 +500,7 @@
 <p>如下是四个黄金法则对应的代码示例：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line"> * 自己生成并持有该对象</div><div class="line"> */</div><div class="line"> id obj0 = [[NSObeject alloc] init];</div><div class="line"> id obj1 = [NSObeject new];</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line"> * 持有非自己生成的对象</div><div class="line"> */</div><div class="line">id obj = [NSArray array]; // 非自己生成的对象，且该对象存在，但自己不持有</div><div class="line">[obj retain]; // 自己持有对象</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line"> * 不在需要自己持有的对象的时候，释放</div><div class="line"> */</div><div class="line">id obj = [[NSObeject alloc] init]; // 此时持有对象</div><div class="line">[obj release]; // 释放对象</div><div class="line">/*</div><div class="line"> * 指向对象的指针仍就被保留在obj这个变量中</div><div class="line"> * 但对象已经释放，不可访问</div><div class="line"> */</div></pre></td></tr></table></figure>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"> * 不在需要自己持有的对象的时候，释放</div><div class="line"> */</div><div class="line"><span class="keyword">id</span> obj = [[<span class="built_in">NSObeject</span> alloc] init]; <span class="comment">// 此时持有对象</span></div><div class="line">[obj release]; <span class="comment">// 释放对象</span></div><div class="line"><span class="comment">/*</span></div><div class="line"> * 指向对象的指针仍就被保留在obj这个变量中</div><div class="line"> * 但对象已经释放，不可访问</div><div class="line"> */</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line"> * 非自己持有的对象无法释放</div><div class="line"> */</div><div class="line">id obj = [NSArray array]; // 非自己生成的对象，且该对象存在，但自己不持有</div><div class="line">[obj release]; // ~~~此时将运行时crash 或编译器报error~~~ 非 ARC 下，调用该方法会导致编译器报 issues。此操作的行为是未定义的，可能会导致运行时 crash 或者其它未知行为</div></pre></td></tr></table></figure>
 <p>其中 <code>非自己生成的对象，且该对象存在，但自己不持有</code> 这个特性是使用<code>autorelease</code>来实现的，示例代码如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">- (id) getAObjNotRetain &#123;</div><div class="line">    id obj = [[NSObject alloc] init]; // 自己持有对象</div><div class="line">    [obj autorelease]; // 取得的对象存在，但自己不持有该对象</div><div class="line">    return obj;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -519,10 +519,10 @@
 <p><code>__unsafe_unretained</code> 声明这个引用不会保持被引用对象的存活，如果对象没有强引用了，它不会被置为 nil。如果它引用的对象被回收掉了，该指针就变成了野指针。</p>
 <p><code>__autoreleasing</code> 用于标示使用引用传值的参数（id *），在函数返回时会被自动释放掉。</p>
 <p>变量标识符的用法如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Number* __strong num = [[Number alloc] init];</div></pre></td></tr></table></figure>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Number</span>* __strong num = [[<span class="built_in">Number</span> alloc] init]<span class="comment">;</span></div></pre></td></tr></table></figure>
 <p>注意 <code>__strong</code> 的位置应该放到 <code>*</code> 和变量名中间，放到其他的位置严格意义上说是不正确的，只不过编译器不会报错。</p>
 <h4 id="属性标识符"><a href="#属性标识符" class="headerlink" title="属性标识符"></a>属性标识符</h4><p>类中的属性也可以加上标志符：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@property (assign/retain/strong/weak/unsafe_unretained/copy) Number* num</div></pre></td></tr></table></figure>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">@property</span> (<span class="keyword">assign</span>/<span class="keyword">retain</span>/<span class="keyword">strong</span>/<span class="keyword">weak</span>/<span class="keyword">unsafe_unretained</span>/<span class="keyword">copy</span>) Number* num</div></pre></td></tr></table></figure>
 <p><code>assign</code>表明 setter 仅仅是一个简单的赋值操作，通常用于基本的数值类型，例如<code>CGFloat</code>和<code>NSInteger</code>。</p>
 <p><code>strong</code> 表明属性定义一个拥有者关系。当给属性设定一个新值的时候，首先这个值进行 <code>retain</code> ，旧值进行 <code>release</code> ，然后进行赋值操作。</p>
 <p><code>weak</code> 表明属性定义了一个非拥有者关系。当给属性设定一个新值的时候，这个值不会进行 <code>retain</code>，旧值也不会进行 <code>release</code>， 而是进行类似 <code>assign</code> 的操作。不过当属性指向的对象被销毁时，该属性会被置为nil。</p>
@@ -681,40 +681,8 @@
   </div>
 
 
+<!---->
 
-  <div onclick="showGitment()" id="gitment_title" class="gitment_title">显示 Gitment 评论</div>
-  <div id="container" style="display:none"></div>
-  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-  <script>
-  const myTheme = {
-    render(state, instance) {
-      const container = document.createElement('div');
-      container.lang = "en-US";
-      container.className = 'gitment-container gitment-root-container';
-      container.appendChild(instance.renderHeader(state, instance));
-      container.appendChild(instance.renderEditor(state, instance));
-      container.appendChild(instance.renderComments(state, instance));
-      container.appendChild(instance.renderFooter(state, instance));
-      return container;
-    }
-  }
-  function showGitment() {
-    $("#gitment_title").attr("style", "display:none");
-    $("#container").attr("style", "").addClass("gitment_container");
-    var gitment = new Gitment({
-      id: window.location.pathname,
-      theme: myTheme,
-      owner: 'xxxx',
-      repo: 'xxxx',
-      oauth: {
-        client_id: 'b72549d516c9c460d6b6',
-        client_secret: 'aefd9a5390b81dde2c02e88cef33b72c549d5e77'
-      }
-    });
-    gitment.render('container');
-  }
-  </script>
 
         </div>
         
@@ -834,6 +802,12 @@
         </div>
 
         
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
         
 
         
@@ -956,7 +930,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Objective-C-中的内存分配"><span class="nav-number">1.</span> <span class="nav-text">Objective-C 中的内存分配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MRC-与-ARC"><span class="nav-number">2.</span> <span class="nav-text">MRC 与 ARC</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MRC"><span class="nav-number">2.1.</span> <span class="nav-text">MRC</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#对象操作的四个类别"><span class="nav-number">2.1.1.</span> <span class="nav-text">对象操作的四个类别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四个法则"><span class="nav-number">2.1.2.</span> <span class="nav-text">四个法则</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ARC"><span class="nav-number">2.2.</span> <span class="nav-text">ARC</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#变量标识符"><span class="nav-number">2.2.1.</span> <span class="nav-text">变量标识符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#属性标识符"><span class="nav-number">2.2.2.</span> <span class="nav-text">属性标识符</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#错误使用属性标识符的后果"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">错误使用属性标识符的后果</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#unsafe-unretained-的用处"><span class="nav-number">2.2.2.2.</span> <span class="nav-text">unsafe_unretained 的用处</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#main-m-中-Autorelease-Pool-的解释"><span class="nav-number">2.2.3.</span> <span class="nav-text">main.m 中 Autorelease Pool 的解释</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Objective-C-中的内存分配"><span class="nav-text">Objective-C 中的内存分配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MRC-与-ARC"><span class="nav-text">MRC 与 ARC</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MRC"><span class="nav-text">MRC</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#对象操作的四个类别"><span class="nav-text">对象操作的四个类别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四个法则"><span class="nav-text">四个法则</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ARC"><span class="nav-text">ARC</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#变量标识符"><span class="nav-text">变量标识符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#属性标识符"><span class="nav-text">属性标识符</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#错误使用属性标识符的后果"><span class="nav-text">错误使用属性标识符的后果</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#unsafe-unretained-的用处"><span class="nav-text">unsafe_unretained 的用处</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#main-m-中-Autorelease-Pool-的解释"><span class="nav-text">main.m 中 Autorelease Pool 的解释</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

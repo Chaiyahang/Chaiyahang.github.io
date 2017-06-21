@@ -127,7 +127,7 @@
     fancybox: true,
     motion: true,
     duoshuo: {
-      userId: '0',
+      userId: 'undefined',
       author: '博主'
     },
     algolia: {
@@ -495,7 +495,7 @@
 <h2 id="坐标系"><a href="#坐标系" class="headerlink" title="坐标系"></a>坐标系</h2><p>和视图一样，图层在图层树当中也是相对于父图层按层级关系放置，一个图层的<code>position</code>依赖于它父图层的<code>bounds</code>，如果父图层发生了移动，它的所有子图层也会跟着移动。</p>
 <p>这样对于放置图层会更加方便，因为你可以通过移动根图层来将它的子图层作为一个整体来移动，但是有时候你需要知道一个图层的<em>绝对</em>位置，或者是相对于另一个图层的位置，而不是它当前父图层的位置。</p>
 <p><code>CALayer</code>给不同坐标系之间的图层转换提供了一些工具类方法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">- (CGPoint)convertPoint:(CGPoint)point fromLayer:(CALayer *)layer; </div><div class="line">- (CGPoint)convertPoint:(CGPoint)point toLayer:(CALayer *)layer; </div><div class="line">- (CGRect)convertRect:(CGRect)rect fromLayer:(CALayer *)layer;</div><div class="line">- (CGRect)convertRect:(CGRect)rect toLayer:(CALayer *)layer;</div></pre></td></tr></table></figure>
+<figure class="highlight erlang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">- <span class="params">(CGPoint)</span>convertPoint:<span class="params">(CGPoint)</span>point fromLayer:<span class="params">(CALayer *)</span>layer; </div><div class="line">- <span class="params">(CGPoint)</span>convertPoint:<span class="params">(CGPoint)</span>point toLayer:<span class="params">(CALayer *)</span>layer; </div><div class="line">- <span class="params">(CGRect)</span>convertRect:<span class="params">(CGRect)</span>rect fromLayer:<span class="params">(CALayer *)</span>layer;</div><div class="line">- <span class="params">(CGRect)</span>convertRect:<span class="params">(CGRect)</span>rect toLayer:<span class="params">(CALayer *)</span>layer;</div></pre></td></tr></table></figure>
 <p>这些方法可以把定义在一个图层坐标系下的点或者矩形转换成另一个图层坐标系下的点或者矩形</p>
 <p>常规说来，在iOS上，一个图层的<code>position</code>位于父图层的左上角，但是在Mac OS上，通常是位于左下角。Core Animation可以通过<code>geometryFlipped</code>属性来适配这两种情况，它决定了一个图层的坐标是否相对于父图层垂直翻转，是一个<code>BOOL</code>类型。在iOS上通过设置它为<code>YES</code>意味着它的子图层将会被垂直翻转，也就是将会沿着底部排版而不是通常的顶部（它的所有子图层也同理，除非把它们的<code>geometryFlipped</code>属性也设为<code>YES</code>）。</p>
 <p><code>CALayer</code>并不关心任何响应链事件，所以不能直接处理触摸事件或者手势。但是它有一系列的方法帮你处理事件：<code>-containsPoint:</code>和<code>-hitTest:</code>。</p>
@@ -552,7 +552,7 @@
 <p>Core Animation在每个<em>run loop</em>周期中自动开始一次新的事务（run loop是iOS负责收集用户输入，处理定时器或者网络事件并且重新绘制屏幕的东西），即使你不显式的用<code>[CATransaction begin]</code>开始一次事务，任何在一次run loop循环中属性的改变都会被集中起来，然后做一次0.25秒的动画。</p>
 <p>使用<code>CATransaction</code>控制动画时间</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">- (IBAction)changeColor</div><div class="line">&#123;</div><div class="line">    //begin a new transaction</div><div class="line">    [CATransaction begin];</div><div class="line">    //set the animation duration to 1 second</div><div class="line">    [CATransaction setAnimationDuration:1.0];</div><div class="line">    //randomize the layer background color</div><div class="line">    CGFloat red = arc4random() / (CGFloat)INT_MAX;</div><div class="line">    CGFloat green = arc4random() / (CGFloat)INT_MAX;</div><div class="line">    CGFloat blue = arc4random() / (CGFloat)INT_MAX;</div><div class="line">    self.colorLayer.backgroundColor = [UIColor colorWithRed:red green:green blue:blue alpha:1.0].CGColor;</div><div class="line">    ￼//commit the transaction</div><div class="line">    [CATransaction commit];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h6 id=""><a href="#" class="headerlink" title="================================================================================"></a>================================================================================</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">velocity = change / time</div></pre></td></tr></table></figure>
+<h6 id=""><a href="#" class="headerlink" title="================================================================================"></a>================================================================================</h6><figure class="highlight coq"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">velocity = <span class="built_in">change</span> / <span class="built_in">time</span></div></pre></td></tr></table></figure>
 <p>现实生活中的任何一个物体都会在运动中加速或者减速。那么我们如何在动画中实现这种加速度呢？一种方法是使用<em>物理引擎</em>来对运动物体的摩擦和动量来建模，然而这会使得计算过于复杂。我们称这种类型的方程为<em>缓冲函数</em>，幸运的是，Core Animation内嵌了一系列标准函数提供给我们使用。</p>
 
       
@@ -671,40 +671,8 @@
   </div>
 
 
+<!---->
 
-  <div onclick="showGitment()" id="gitment_title" class="gitment_title">显示 Gitment 评论</div>
-  <div id="container" style="display:none"></div>
-  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-  <script>
-  const myTheme = {
-    render(state, instance) {
-      const container = document.createElement('div');
-      container.lang = "en-US";
-      container.className = 'gitment-container gitment-root-container';
-      container.appendChild(instance.renderHeader(state, instance));
-      container.appendChild(instance.renderEditor(state, instance));
-      container.appendChild(instance.renderComments(state, instance));
-      container.appendChild(instance.renderFooter(state, instance));
-      return container;
-    }
-  }
-  function showGitment() {
-    $("#gitment_title").attr("style", "display:none");
-    $("#container").attr("style", "").addClass("gitment_container");
-    var gitment = new Gitment({
-      id: window.location.pathname,
-      theme: myTheme,
-      owner: 'xxxx',
-      repo: 'xxxx',
-      oauth: {
-        client_id: 'b72549d516c9c460d6b6',
-        client_secret: 'aefd9a5390b81dde2c02e88cef33b72c549d5e77'
-      }
-    });
-    gitment.render('container');
-  }
-  </script>
 
         </div>
         
@@ -824,6 +792,12 @@
         </div>
 
         
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
         
 
         
@@ -946,7 +920,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#视图的几何属性"><span class="nav-number">1.</span> <span class="nav-text">视图的几何属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#布局"><span class="nav-number"></span> <span class="nav-text">布局</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#动画"><span class="nav-number">1.</span> <span class="nav-text">动画</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#锚点"><span class="nav-number"></span> <span class="nav-text">锚点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#坐标系"><span class="nav-number"></span> <span class="nav-text">坐标系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#阴影"><span class="nav-number"></span> <span class="nav-text">阴影</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shadowPath属性"><span class="nav-number"></span> <span class="nav-text">shadowPath属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图层蒙板"><span class="nav-number"></span> <span class="nav-text">图层蒙板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CATextLayer"><span class="nav-number"></span> <span class="nav-text">CATextLayer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CATiledLayer"><span class="nav-number"></span> <span class="nav-text">CATiledLayer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#图片裁剪"><span class="nav-number">1.</span> <span class="nav-text">图片裁剪</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">================================================================================</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#视图的几何属性"><span class="nav-text">视图的几何属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#布局"><span class="nav-text">布局</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#动画"><span class="nav-text">动画</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#锚点"><span class="nav-text">锚点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#坐标系"><span class="nav-text">坐标系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#阴影"><span class="nav-text">阴影</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shadowPath属性"><span class="nav-text">shadowPath属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图层蒙板"><span class="nav-text">图层蒙板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CATextLayer"><span class="nav-text">CATextLayer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CATiledLayer"><span class="nav-text">CATiledLayer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#图片裁剪"><span class="nav-text">图片裁剪</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#"><span class="nav-text">================================================================================</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
