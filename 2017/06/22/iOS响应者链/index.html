@@ -86,7 +86,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="iOS," />
 
 
 
@@ -102,15 +102,19 @@
 
 
 
-<meta name="description" content="Talk is cheap， show me the code. 用心创造美好未来">
-<meta property="og:type" content="website">
-<meta property="og:title" content="iOS Developer">
-<meta property="og:url" content="http://yoursite.com/tags/文学/index.html">
+<meta name="description" content="要想了解🍎的响应者链的执行顺序，就要先明白 Apple 的触发机制">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS响应者链">
+<meta property="og:url" content="http://yoursite.com/2017/06/22/iOS响应者链/index.html">
 <meta property="og:site_name" content="iOS Developer">
-<meta property="og:description" content="Talk is cheap， show me the code. 用心创造美好未来">
+<meta property="og:description" content="要想了解🍎的响应者链的执行顺序，就要先明白 Apple 的触发机制">
+<meta property="og:image" content="http://img.blog.csdn.net/20151020173401682?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:image" content="https://developer.apple.com/library/content/documentation/EventHandling/Conceptual/EventHandlingiPhoneOS/Art/responder_chain_overview_2x.png">
+<meta property="og:updated_time" content="2017-06-22T03:15:43.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS Developer">
-<meta name="twitter:description" content="Talk is cheap， show me the code. 用心创造美好未来">
+<meta name="twitter:title" content="iOS响应者链">
+<meta name="twitter:description" content="要想了解🍎的响应者链的执行顺序，就要先明白 Apple 的触发机制">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20151020173401682?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
 
 
 
@@ -138,13 +142,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/文学/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/06/22/iOS响应者链/"/>
 
 
 
 
 
-  <title> 标签: 文学 | iOS Developer </title>
+  <title> iOS响应者链 | iOS Developer </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -184,7 +188,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -332,46 +336,262 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        文学
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/22/iOS响应者链/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="柴亚航">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="iOS Developer">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="iOS Developer" src="/images/favicon.ico">
+    </span>
+  </span>
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                iOS响应者链
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-22T10:58:41+08:00">
+                2017-06-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/06/22/iOS响应者链/" class="leancloud_visitors" data-flag-title="iOS响应者链">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+              <div class="post-description">
+                  要想了解🍎的响应者链的执行顺序，就要先明白 Apple 的触发机制
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <p><a href="https://github.com/wz1383691/WZTouch" target="_blank" rel="external">https://github.com/wz1383691/WZTouch</a></p>
+<p>事件的传递是从上到下的，事件的响应是从下到上的。</p>
+<p>iOS 响应者链Responder Chain浅析</p>
+<p>​    在iOS中，当发生事件响应时，必须知道由谁来响应事件。这就是由响应者链来对事件进行响应，所有事件响应的类都是UIResponder的子类，响应者链是一个由不同对象组成的层次结构，其中的每个对象将依次获得响应事件消息的机会。</p>
+<p>​    当发生事件时，事件首先被发送给第一响应者，第一响应者往往是事件发生的视图，也就是用户触摸屏幕的地方。<strong>事件将沿着响应者链一直向下传递，直到被接受并作出处理。</strong></p>
+<p>​    一般来说，第一响应者是个视图对象或者其子类对象，当其被触摸后事件交由他处理，如果他不处理，事件就会被传递给它的视图控制器对象ViewController（如果存在），然后是他的父视图（superview）对象（如果存在），以此类推，直到顶层视图（top view）。接下来会沿着顶层视图（top view）到窗口（UIWindow对象），再到程序（UIApplication对象）。如果整个过程都没有响应这个事件，该事件就被丢弃。一般情况下，在响应链中只要有对象处理事件，事件就停止传递。</p>
+<p>​       一个典型的响应路线如下：</p>
+<p>First Responder–&gt;The Window–&gt;The Application–&gt;App Delegate.</p>
+<p>​       有了以上的基础，我们来谈谈事件。iOS中事件分为三类，触摸屏幕、晃动设备、远程控制设备。对应的事件类型有以下三种：</p>
+<p>（1）触屏时间（Touch Event）;</p>
+<p>（2）运动事件（Motion Event）;</p>
+<p>（3）远程控制事件（Remote-Control Event）;</p>
+<p>​        现在我们以触摸事件为例，来深入了解一下响应者链（Responder Chain）.</p>
+<p>​        响应者对象(Responder Object)，指的是有响应和处理事件能力的对象。响应者链就是一系列的响应者对象构成的一个层次结构。UIResponder是所有响应对象的基类，在UIResponder类中定义了处理上述各种事件的接口。我们熟悉的UIApplication,UIViewController,UIWindow和所有继承自UIView的UIKit类都直接或者间接继承自UIResponder，所以他们的实例都是可以构成响应者链的响应者对象。如下图所示：</p>
+<p><img src="http://img.blog.csdn.net/20151020173401682?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="img"></p>
+<p>从上图可以看到，响应者链有以下特点：</p>
+<p>（1）响应者链通常是由视图（UIView）构成的；</p>
+<p>（2）一个视图的下一个响应者是他的视图控制器（UIViewController）（如果有的话），然后再传给它的父视图（SuperView）。</p>
+<p>（3）视图控制器（如果有的话）的下一个响应者为其管理的视图的父视图。</p>
+<p>（4）单例的窗口（UiWindow）的内容视图将指向窗口本身作为它的下一个响应者。</p>
+<p>（5）单例的应用（UIApplication）是一个响应者的终点。它的下一个响应者指向nil，以结束整个循环。</p>
+<h6 id="然后再来了解下事件分发-Event-Delivery-："><a href="#然后再来了解下事件分发-Event-Delivery-：" class="headerlink" title="然后再来了解下事件分发(Event Delivery)："></a>然后再来了解下事件分发(Event Delivery)：</h6><p>​    第一响应者（First Responder）指的是当前接受触摸的响应者对象（通常是一个UIView对象），即表示当前该对象正在与用户交互，它是响应者链的开端。整个响应者链和事件分发的使命都是找出第一响应者。UIWindow对象以消息的形式将事件发送给第一响应者，使其有机会首先处理事件。如果第一响应者没有进行处理，系统就将事件（通过消息）传递给响应链中的下一个响应者，看他是否能够处理。</p>
+<p>​       现在我用几句话来简单说明下什么是响应者链条：</p>
+<p>（1）响应者链是由多个响应者对象链接起来的队列；</p>
+<p>（2）响应者对象是指能够处理事件的对象，也就是继承自UIResponder的对象；</p>
+<p>（3）使用响应者链条，能够让一条链上的多个对象对同一事件作出响应；</p>
+<p>（4）消息在响应者链上传递也就是想找到下一个响应的对象（nextResponder）;</p>
+<p>​      这里我们要注意到一个问题，对于消息事件的管理，我们使用的是队列，而不是栈，因为我们要保证先产生的事件先处理，也就是先进先出。</p>
+<blockquote>
+<p>以上是各个 iOSDev 给出的解释….</p>
+<p>以下是🍎官方文档给出的解释….</p>
+</blockquote>
+<h2 id="Understanding-Responders-and-the-Responder-Chain"><a href="#Understanding-Responders-and-the-Responder-Chain" class="headerlink" title="Understanding Responders and the Responder Chain"></a>Understanding Responders and the Responder Chain</h2><p>Apps receive and handle events using responder objects. A responder object is any instance of the <code>UIResponder</code>class, and common subclasses include <code>UIView</code>, <code>UIViewController</code>, and <code>UIApplication</code>. UIKit manages most responder-related behavior automatically, including how events are delivered from one responder to the next. However, you can modify the default behavior to change how events are delivered within your app.</p>
+<p>UIKit directs most events to the most appropriate responder object in your app. If that object does not handle the event, UIKit forwards it to the next responder in the active <em>responder chain</em>, which is a dynamic configuration of your app’s responder objects. Because it is dynamic, there is no single responder chain within your app. However, it is easy to determine the next responder in the chain because events always flow from specific responder objects to more general responder objects. For example, the next responder for a view is either its superview or the view controller that manages it. Events continue to flow up the responder chain until they are handled. </p>
+<p>Figure 7-1 shows the responder chains that form in an app whose interface contains a label, a text field, a button, and two background views. If the text field does not handle an event, UIKit sends the event to the text field’s parent <code>UIView</code> object, followed by the root view of the window. From the root view, the responder chain diverts to the owning view controller before returning to the view’s window. If the window does not handle the event, UIKit delivers the event to the <code>UIApplication</code> object, and possibly to the app delegate if that object is an instance of <code>UIResponder</code> and not already part of the responder chain. </p>
+<p><strong>Figure 7-1</strong>An example of a responder chain<img src="https://developer.apple.com/library/content/documentation/EventHandling/Conceptual/EventHandlingiPhoneOS/Art/responder_chain_overview_2x.png" alt="image: ../Art/responder_chain_overview_2x.png"></p>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2017/01/02/覃彪喜收藏/" itemprop="url">
-              
-                <span itemprop="name">覃彪喜收藏</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>赏一杯静坐思考手起键落的咖啡钱!</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/WeChatPay.jpg" alt="柴亚航 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/AliPay.jpg" alt="柴亚航 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-01-02T22:49:02+08:00"
-              content="2017-01-02" >
-          01-02
-        </time>
-      </div>
 
-    </header>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag"># iOS</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/25/iOS推送机制/" rel="next" title="iOS推送机制">
+                <i class="fa fa-chevron-left"></i> iOS推送机制
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -379,6 +599,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -398,8 +622,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -602,6 +835,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#然后再来了解下事件分发-Event-Delivery-："><span class="nav-text">然后再来了解下事件分发(Event Delivery)：</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Understanding-Responders-and-the-Responder-Chain"><span class="nav-text">Understanding Responders and the Responder Chain</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
     </div>
   </aside>
@@ -723,6 +972,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
@@ -873,26 +1126,6 @@
 
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
