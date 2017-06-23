@@ -110,7 +110,7 @@
 <meta property="og:description" content="要想了解🍎的响应者链的执行顺序，就要先明白 Apple 的触发机制">
 <meta property="og:image" content="http://img.blog.csdn.net/20151020173401682?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
 <meta property="og:image" content="https://developer.apple.com/library/content/documentation/EventHandling/Conceptual/EventHandlingiPhoneOS/Art/responder_chain_overview_2x.png">
-<meta property="og:updated_time" content="2017-06-22T03:15:43.000Z">
+<meta property="og:updated_time" content="2017-06-23T09:15:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS响应者链">
 <meta name="twitter:description" content="要想了解🍎的响应者链的执行顺序，就要先明白 Apple 的触发机制">
@@ -491,6 +491,7 @@
 <p>UIKit directs most events to the most appropriate responder object in your app. If that object does not handle the event, UIKit forwards it to the next responder in the active <em>responder chain</em>, which is a dynamic configuration of your app’s responder objects. Because it is dynamic, there is no single responder chain within your app. However, it is easy to determine the next responder in the chain because events always flow from specific responder objects to more general responder objects. For example, the next responder for a view is either its superview or the view controller that manages it. Events continue to flow up the responder chain until they are handled. </p>
 <p>Figure 7-1 shows the responder chains that form in an app whose interface contains a label, a text field, a button, and two background views. If the text field does not handle an event, UIKit sends the event to the text field’s parent <code>UIView</code> object, followed by the root view of the window. From the root view, the responder chain diverts to the owning view controller before returning to the view’s window. If the window does not handle the event, UIKit delivers the event to the <code>UIApplication</code> object, and possibly to the app delegate if that object is an instance of <code>UIResponder</code> and not already part of the responder chain. </p>
 <p><strong>Figure 7-1</strong>An example of a responder chain<img src="https://developer.apple.com/library/content/documentation/EventHandling/Conceptual/EventHandlingiPhoneOS/Art/responder_chain_overview_2x.png" alt="image: ../Art/responder_chain_overview_2x.png"></p>
+<p><a href="https://hit-alibaba.github.io/interview/iOS/Cocoa-Touch/Event-Handling.html" target="_blank" rel="external">更为详细的讲解</a></p>
 
       
     </div>
