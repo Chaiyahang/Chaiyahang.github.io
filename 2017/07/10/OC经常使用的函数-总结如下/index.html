@@ -108,7 +108,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/07/10/OC经常使用的函数-总结如下/index.html">
 <meta property="og:site_name" content="iOS Developer">
 <meta property="og:description" content="减少每次使用都要到处查询的痛苦">
-<meta property="og:updated_time" content="2017-07-10T02:56:54.000Z">
+<meta property="og:updated_time" content="2017-07-10T08:40:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OC经常使用的函数~总结如下">
 <meta name="twitter:description" content="减少每次使用都要到处查询的痛苦">
@@ -460,6 +460,7 @@
 <h5 id="6-、绝对值"><a href="#6-、绝对值" class="headerlink" title="6 、绝对值"></a>6 、绝对值</h5><p>　　double fabs (double);求绝对值<br>　　double cabs(struct complex znum) ;求复数的绝对值 </p>
 <h5 id="7-、标准化浮点数"><a href="#7-、标准化浮点数" class="headerlink" title="7 、标准化浮点数"></a>7 、标准化浮点数</h5><p>　　double frexp (double f, int <em>p); 标准化浮点数, f = x </em> 2^p, 已知f求x, p ( x介于[0.5, 1] )<br>　　double ldexp (double x, int p); 与frexp相反, 已知x, p求f </p>
 <h5 id="8-、取整与取余"><a href="#8-、取整与取余" class="headerlink" title="8 、取整与取余"></a>8 、取整与取余</h5><p>　　double modf (double, double*); 将参数的整数部分通过指针回传, 返回小数部分<br>　　double fmod (double, double); 返回两参数相除的余数 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">RN 当中的取整 和 取余：</div><div class="line"></div><div class="line">举例说明：(九宫格布局 行和列)</div><div class="line">//1.定义相关常量(总列数,商品宽度,高度)</div><div class="line">const cols = 3,shopW = 100,shopH = 120;</div><div class="line"></div><div class="line">//2.取出下标</div><div class="line">var index = this.state.shopArray.length;</div><div class="line"></div><div class="line">//3.根据下标求出行数列数 求行是用下标数 对列 取整，求列是下标数 对列 取余。</div><div class="line">var row = parseInt(index / cols);</div><div class="line">var col = parseInt(index % cols);</div></pre></td></tr></table></figure>
 <h5 id="9-、其他-不常用函数"><a href="#9-、其他-不常用函数" class="headerlink" title="9 、其他 不常用函数"></a>9 、其他 不常用函数</h5><p>　　double hypot(double x, double y);已知直角三角形两个直角边长度，求斜边长度<br>　　double ldexp(double x, int exponent);计算x<em>(2的exponent次幂)<br>　　double poly(double x, int degree, double coeffs [] );计算多项式<br>　　nt matherr(struct exception </em>e);数学错误计算处理程序</p>
 
       
@@ -525,6 +526,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/11/2015-年-OSC-北京源创会年终盛典全程视频/" rel="prev" title="2015 年 OSC 北京源创会年终盛典全程视频">
+                2015 年 OSC 北京源创会年终盛典全程视频 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -615,7 +620,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">46</span>
+              <span class="site-state-item-count">47</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -623,7 +628,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -632,7 +637,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-count">37</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
