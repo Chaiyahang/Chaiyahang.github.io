@@ -109,7 +109,7 @@
 <meta property="og:site_name" content="iOS Developer">
 <meta property="og:description" content="UIApplication 的核心作用是提供了 iOS 程序运行期间的控制和协作工作。">
 <meta property="og:image" content="https://ww2.sinaimg.cn/large/006tKfTcly1fduexdc18mj30fz0lqdhd.jpg">
-<meta property="og:updated_time" content="2017-03-21T05:57:22.000Z">
+<meta property="og:updated_time" content="2017-07-12T11:32:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=" ios应用程序的生命周期">
 <meta name="twitter:description" content="UIApplication 的核心作用是提供了 iOS 程序运行期间的控制和协作工作。">
@@ -494,6 +494,7 @@
 <p>下面是一个用于展示整个 App 生命周期的示意图：</p>
 <p><img src="https://ww2.sinaimg.cn/large/006tKfTcly1fduexdc18mj30fz0lqdhd.jpg" alt=""></p>
 <p>这一张来自 Twitter 的图片，对于理解 iOS App 的生命周期起到了非常大的作用！</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">[<span class="built_in">UIApplication</span> sharedApplication].windows</div><div class="line">在本应用中打开的<span class="built_in">UIWindow</span>列表，这样就可以接触应用中的任何一个<span class="built_in">UIView</span>对象</div><div class="line">(平时输入文字弹出的键盘，就处在一个新的<span class="built_in">UIWindow</span>中)</div><div class="line"></div><div class="line">[<span class="built_in">UIApplication</span> sharedApplication].keyWindow</div><div class="line">用来接收键盘以及非触摸类的消息事件的<span class="built_in">UIWindow</span>，而且程序中每个时刻只能有一个<span class="built_in">UIWindow</span>是keyWindow。如果某个<span class="built_in">UIWindow</span>内部的文本框不能输入文字，可能是因为这个<span class="built_in">UIWindow</span>不是keyWindow</div><div class="line"></div><div class="line">view.window</div><div class="line">获得某个<span class="built_in">UIView</span>所在的<span class="built_in">UIWindow</span></div></pre></td></tr></table></figure>
 
       
     </div>
@@ -650,7 +651,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">47</span>
+              <span class="site-state-item-count">48</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -658,7 +659,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -667,7 +668,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">38</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
